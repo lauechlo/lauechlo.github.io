@@ -1,0 +1,12 @@
+# Working material, deliberately not published.
+# Everything here is kept on disk, just outside the site.
+_source/
+
+# Notes to Claude, not part of the site
+CLAUDE.md
+
+# OS / editor noise
+.DS_Store
+Thumbs.db
+desktop.ini
+*.swp

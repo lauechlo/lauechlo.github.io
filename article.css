@@ -1,0 +1,252 @@
+/* Sub-page article styles. Tokens mirror index.html. */
+
+:root{
+  --bone:#F6F3E4;
+  --bone-2:#E6E0CB;
+  --paper:#FBF9F0;
+  --panel:#FDFCF6;
+  --ink:#1A1710;
+  --ink-2:#322F24;
+  --muted:#5D5A4B;
+  --forest:#31694A;
+  --forest-2:#2E6138;
+  --slate:#22503A;
+  --slate-2:#17351F;
+  --clay:#A84A32;
+  --clay-2:#8E3D2A;
+  --hair:rgba(26,23,13,0.10);
+  --line:rgba(26,23,13,0.07);
+  --green-dim:#FBF7E6;
+  --slate-dim:#EDE4C4;
+  /* one place to change a typeface. Never hardcode a family below. */
+  --font-heading:'Fraunces',Georgia,serif;
+  --font-body:'Karla',ui-sans-serif,system-ui,sans-serif;}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+html,body{
+  background:var(--bone);
+  color:var(--ink);
+  font-family:var(--font-body);
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+  font-size:16px;
+  line-height:1.65;
+  font-weight:400;
+  letter-spacing:-0.005em;}
+a{color:inherit;text-decoration:none}
+::selection{background:var(--slate);color:var(--bone)}
+
+
+/* Top bar */
+.topbar{
+  position:sticky;top:0;z-index:10;
+  background:rgba(246,243,228,0.94);
+  backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--line);
+  padding:14px 32px;
+  display:flex;align-items:center;justify-content:space-between;}
+.topbar .home{
+  font-family:var(--font-heading);
+  font-size:20px;
+  color:var(--ink);
+  display:inline-flex;align-items:center;gap:8px;
+  transition:color .15s;}
+.topbar .home:hover{color:var(--slate-2)}
+.topbar .home .arrow{font-size:16px;color:var(--muted)}
+.topbar .crumb{
+  font-family:var(--font-body);
+  font-weight:500;
+  font-size:11.5px;letter-spacing:0.02em;text-transform:uppercase;
+  color:var(--muted);}
+.topbar .crumb b{color:var(--ink-2);font-weight:500}
+
+/* Article shell */
+article{
+  max-width:680px;
+  margin:0 auto;
+  padding:72px 32px 96px;}
+
+/* Hero image (above the title) */
+.hero-image{
+  display:block;
+  width:100%;
+  aspect-ratio:16/10;
+  object-fit:cover;
+  border-radius:10px;
+  margin-bottom:36px;}
+
+/* Inline body figure with caption */
+.figure{
+  margin:32px 0;
+  display:block;}
+.figure img{
+  display:block;
+  width:100%;
+  border-radius:4px;
+  background:var(--bone-2);}
+.figure figcaption{
+  font-family:var(--font-body);
+  font-style:italic;
+  font-size:13.5px;
+  color:var(--muted);
+  margin-top:10px;
+  line-height:1.5;}
+
+/* Article title */
+article h1{
+  font-family:var(--font-heading);
+  font-weight:400;
+  font-size:clamp(28px,4.4vw,40px);
+  line-height:1.1;
+  letter-spacing:-0.01em;
+  color:var(--ink);
+  margin-bottom:18px;}
+article h1 em{
+  font-style:italic;
+  color:var(--slate);}
+
+/* Subhead meta lines */
+.meta{
+  font-family:var(--font-body);
+  font-size:15px;
+  color:var(--muted);
+  line-height:1.5;
+  margin-bottom:6px;}
+.meta-block{margin-bottom:44px}
+.my-role{font-family:var(--font-body);font-style:italic;font-size:15px;color:var(--muted);margin:14px 0 32px;padding:14px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);line-height:1.6}
+.my-role b{font-style:normal;font-weight:600;letter-spacing:0.02em;text-transform:uppercase;font-size:11.5px;display:block;margin-bottom:4px;color:var(--slate)}
+
+/* Section headings inside article */
+article h2{
+  font-family:var(--font-heading);
+  font-weight:400;
+  font-style:italic;
+  font-size:23px;
+  line-height:1.22;
+  color:var(--ink);
+  margin:40px 0 14px;}
+article h3{
+  font-family:var(--font-body);
+  font-weight:600;
+  font-size:17px;
+  color:var(--ink);
+  margin:28px 0 8px;
+  letter-spacing:0;}
+
+/* Body copy */
+article p{
+  font-size:15px;
+  line-height:1.7;
+  color:var(--ink-2);
+  margin-bottom:18px;}
+article p + p{margin-top:0}
+article em{font-style:italic;color:var(--slate)}
+article strong{font-weight:500;color:var(--ink)}
+
+/* Pull quotes */
+article blockquote{
+  font-family:var(--font-heading);
+  font-style:italic;
+  font-size:20px;
+  line-height:1.4;
+  color:var(--ink);
+  border-left:2px solid var(--slate);
+  padding:8px 0 8px 22px;
+  margin:28px 0 28px 8px;}
+
+/* Lists */
+article ul{
+  margin:8px 0 24px;
+  padding-left:22px;}
+article ul li{
+  font-size:15px;
+  line-height:1.65;
+  color:var(--ink-2);
+  margin-bottom:8px;}
+article ul li::marker{color:var(--slate)}
+
+/* Section kicker (small mono label above a case-study h2) */
+.kicker{
+  font-family:var(--font-body);
+  font-weight:500;
+  font-size:11.5px;letter-spacing:0.02em;text-transform:uppercase;
+  color:var(--slate);
+  display:block;
+  margin:40px 0 0;}
+.kicker + h2{margin-top:4px}
+
+/* Case-study sub-index (visible spine of sections) */
+.subindex{
+  font-family:var(--font-body);
+  font-size:11.5px;letter-spacing:0.02em;
+  color:var(--muted);
+  padding:14px 0;
+  margin:0 0 8px;
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+  line-height:1.95;}
+.subindex b{
+  display:block;
+  color:var(--slate);
+  font-weight:600;text-transform:uppercase;letter-spacing:0.02em;font-size:11.5px;
+  margin-bottom:6px;}
+.subindex a{color:var(--ink-2);border-bottom:1px solid var(--hair);padding-bottom:1px;transition:color .15s ease,border-color .15s ease}
+.subindex a:hover{color:var(--slate);border-color:var(--slate)}
+.subindex .sep{opacity:0.35;margin:0 7px}
+
+
+/* Footer */
+.article-footer{
+  max-width:680px;
+  margin:0 auto;
+  padding:32px 32px 64px;
+  border-top:1px solid var(--line);
+  display:flex;justify-content:space-between;align-items:center;
+  font-size:13px;color:var(--muted);}
+.article-footer a{
+  color:var(--ink-2);
+  border-bottom:1px solid var(--line);
+  padding-bottom:1px;
+  transition:color .15s, border-color .15s;}
+.article-footer a:hover{color:var(--slate-2);border-color:var(--slate)}
+
+@media (max-width:640px){
+  .topbar{padding:12px 20px}
+  article{padding:48px 20px 72px}
+  .article-footer{padding:24px 20px 48px;flex-direction:column;gap:12px;align-items:flex-start}
+  article h1{font-size:34px}
+  article h2{font-size:24px;margin-top:36px}
+  article p, article ul li{font-size:16px}
+}
+
+/* ─── Print / Save as PDF ─── */
+@media print{
+  *,*::before,*::after{
+    -webkit-print-color-adjust:exact !important;
+    print-color-adjust:exact !important;
+    color-adjust:exact !important;}
+  @page{size:Letter;margin:0.5in}
+
+  html,body{background:var(--bone) !important;color:var(--ink) !important}
+  body{font-size:11.5px;line-height:1.6}
+
+  /* Strip sticky behavior + interactivity */
+  .topbar{position:static !important;background:var(--bone) !important;backdrop-filter:none !important;padding:0 0 14px;border-bottom:1px solid var(--line) !important}
+  .article-footer{margin-top:32px}
+  .article-footer a{color:var(--ink-2) !important;border-bottom:none}
+
+  /* Article column relaxes for the printable area */
+  article{padding:18px 0 0 !important; max-width:100% !important}
+
+  /* Prevent breaks inside small blocks */
+  article h2, article h3{break-after:avoid; page-break-after:avoid}
+  article blockquote, .meta-block, .figure{break-inside:avoid; page-break-inside:avoid}
+
+  /* Make link styling quiet in print */
+  a{color:inherit;text-decoration:none}
+}
+
+/* Second accent, mirroring index.html. See --clay note there. */
+.my-role b{color:var(--clay)}
+.article-nav a:hover{color:var(--clay)}
