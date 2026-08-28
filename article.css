@@ -212,13 +212,25 @@ article ul li::marker{color:var(--slate)}
   transition:color .15s, border-color .15s;}
 .article-footer a:hover{color:var(--slate-2);border-color:var(--slate)}
 
-@media (max-width:640px){
+/* Tap targets: min 44px height for touch accessibility */
+.subindex a{display:inline-block;padding:8px 0}
+.article-footer a{display:inline-block;padding:8px 0}
+.topbar .crumb{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:55%}
+
+@media (max-width:767px){
   .topbar{padding:12px 20px}
   article{padding:48px 20px 72px}
   .article-footer{padding:24px 20px 48px;flex-direction:column;gap:12px;align-items:flex-start}
   article h1{font-size:34px}
   article h2{font-size:24px;margin-top:36px}
   article p, article ul li{font-size:16px}
+}
+
+/* Phone landscape: don't spend 1.5 screens on padding + hero before the title */
+@media (max-height:500px){
+  article{padding-top:28px}
+  .hero-image{aspect-ratio:21/9;margin-bottom:20px}
+  .topbar{padding:8px 20px}
 }
 
 /* ─── Print / Save as PDF ─── */
