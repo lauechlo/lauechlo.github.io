@@ -65,5 +65,5 @@ const VIEWPORTS = [
     await browser.close();
   }
   if (failures.length) { console.log('FAIL\n' + failures.join('\n')); process.exitCode = 1; }
-  console.log('PASS: all mobile checks green');
+  else console.log('PASS: all mobile checks green');
 })().catch(e => { console.error(e.message); process.exitCode = 1; });
