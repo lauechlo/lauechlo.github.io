@@ -457,12 +457,17 @@
     /* App layout */
     main{padding:20px 20px 64px;max-width:100%;margin:0}
 
-    /* Mobile top strip */
-    .mobile-me{display:flex;align-items:center;gap:10px;margin-bottom:24px}
-    .mobile-me .av{width:32px;height:32px;border-radius:50%;overflow:hidden;background:var(--bone-2);flex-shrink:0}
-    .mobile-me .av img{width:100%;height:100%;object-fit:cover;display:block}
-    .mobile-me .n{font-weight:500;font-size:13.5px;color:var(--ink)}
-    .mobile-me .n em{font-family:var(--font-heading);font-style:italic;color:var(--slate);font-weight:400;font-size:14px;margin-left:2px}
+    /* Top nav: brand + CTA only; section links are one scroll away */
+    .topnav{padding:10px 16px}
+    .topnav-brand{white-space:nowrap}
+    .topnav-links{gap:12px}
+    .topnav-links a:not(.topnav-cta){display:none}
+    .topnav-cta{padding:7px 12px;white-space:nowrap}
+    /* Sticky nav already shows the name; drop the duplicate strip */
+    .mobile-me{display:none}
+    /* 520px decorative glow overflows a phone viewport */
+    .hero::before{display:none}
+    #top, #projects, #writing, #about, #resume, #contact, #currently{scroll-margin-top:60px}
 
     /* Hero */
     /* must out-specify [data-hero="split"] (0,2,0) or the mobile stack never applies */
@@ -471,7 +476,7 @@
     .hero .sub{font-size:15px;line-height:1.55}
     /* width:100% is load-bearing: every child is position:absolute, so margin:0 auto
        alone shrink-to-fits this box to 0 and the portrait vanishes on phones */
-    .hero-portrait, [data-hero="split"] .hero-portrait{height:auto;aspect-ratio:1/1;min-height:0;width:100%;max-width:320px;margin:0 auto}
+    .hero-portrait, [data-hero="split"] .hero-portrait{height:auto;aspect-ratio:1/1;min-height:0;width:100%;max-width:320px;margin:0 auto;justify-self:center}
     /* Metrics 4→2x2 */
     .metrics-row{grid-template-columns:1fr 1fr;gap:10px}
     .card .val{font-size:24px}
