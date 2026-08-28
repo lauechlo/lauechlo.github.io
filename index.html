@@ -128,11 +128,11 @@
   .hero-portrait .portrait-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity .6s ease}
   .hero-portrait .portrait-headshot{object-position:50% 32%;opacity:1;z-index:1}
   .hero-portrait .portrait-harp{object-position:62% 34%;opacity:0;z-index:2}
-  .hero-portrait:hover .portrait-headshot{opacity:0}
-  .hero-portrait:hover .portrait-harp{opacity:1}
+  .hero-portrait:hover .portrait-headshot, .hero-portrait.flip .portrait-headshot{opacity:0}
+  .hero-portrait:hover .portrait-harp,     .hero-portrait.flip .portrait-harp{opacity:1}
   .hero-portrait .portrait-cue{position:absolute;bottom:12px;right:12px;z-index:3;width:26px;height:26px;display:flex;align-items:center;justify-content:center;font-family:var(--font-heading);font-size:13px;color:var(--slate);line-height:1;opacity:0.7;transition:opacity .35s ease, transform .35s ease;animation:portraitCuePulse 2.8s ease-in-out infinite}
   @keyframes portraitCuePulse{0%,100%{opacity:0.55}50%{opacity:0.95}}
-  .hero-portrait:hover .portrait-cue{opacity:0;transform:scale(0.85)}
+  .hero-portrait:hover .portrait-cue,      .hero-portrait.flip .portrait-cue{opacity:0;transform:scale(0.85)}
 
   /* ─── Metrics row ─── */
   .metrics-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:14px}
@@ -260,7 +260,7 @@
   /* Photo collage */
   .collage{position:relative;height:600px}
   .photo{position:absolute;background:var(--bone-2);border:1px solid var(--hair);border-radius:8px;overflow:hidden;box-shadow:0 14px 28px -14px rgba(15,26,20,0.22);transition:transform .3s, box-shadow .3s, z-index 0s .3s}
-  .photo:hover{transform:scale(1.04) rotate(0deg) !important;z-index:20 !important;box-shadow:0 24px 48px -20px rgba(15,26,20,0.3);transition:transform .25s cubic-bezier(.2,.7,.3,1), box-shadow .25s, z-index 0s}
+  @media (hover:hover){ .photo:hover{transform:scale(1.04) rotate(0deg) !important;z-index:20 !important;box-shadow:0 24px 48px -20px rgba(15,26,20,0.3);transition:transform .25s cubic-bezier(.2,.7,.3,1), box-shadow .25s, z-index 0s} }
   .photo image-slot{position:absolute;inset:0;width:100%;height:100%}
   .photo img{display:block}
   .photo.p1{top:0;left:0;width:56%;height:54%;transform:rotate(-1.5deg);z-index:3}
@@ -325,7 +325,7 @@
   /* ─── Always-on subtle delights ─── */
   /* Aurora glow behind hero portrait */
   .hero-portrait::before{content:"";position:absolute;inset:-30px;background:radial-gradient(circle at 30% 30%, color-mix(in oklab, var(--forest) 38%, transparent), transparent 55%), radial-gradient(circle at 70% 70%, color-mix(in oklab, #10B981 28%, transparent), transparent 55%);filter:blur(40px);opacity:0;transition:opacity .8s;z-index:-1;border-radius:50%}
-  .hero-portrait:hover::before{opacity:0.9}
+  @media (hover:hover){ .hero-portrait:hover::before{opacity:0.9} }
   .hero{position:relative}
   .hero::before{content:"";position:absolute;top:-40px;right:-60px;width:520px;height:520px;background:radial-gradient(circle, color-mix(in oklab, var(--forest) 18%, transparent), transparent 60%);filter:blur(40px);pointer-events:none;z-index:-1;opacity:0.6}
 
@@ -425,7 +425,7 @@
   #tweaks-popover.open{opacity:1;transform:translateY(0);pointer-events:auto}
   #tweaks-popover .twk-hd{display:flex;align-items:center;justify-content:space-between;padding:12px 14px 8px;font-size:13px}
   #tweaks-popover .twk-hd b{font-weight:500;letter-spacing:0.01em}
-  #tweaks-popover .twk-x{appearance:none;background:none;border:0;color:var(--muted);width:22px;height:22px;border-radius:6px;cursor:pointer;font-size:13px;line-height:1;padding:0}
+  #tweaks-popover .twk-x{appearance:none;background:none;border:0;color:var(--muted);width:32px;height:32px;border-radius:6px;cursor:pointer;font-size:13px;line-height:1;padding:0}
   #tweaks-popover .twk-x:hover{background:var(--paper);color:var(--ink)}
   #tweaks-popover .twk-body{padding:4px 14px 14px;display:flex;flex-direction:column;gap:12px}
   #tweaks-popover .twk-row{display:flex;align-items:center;justify-content:space-between;gap:10px}
@@ -523,7 +523,6 @@
     /* Photo collage → 2x2 static grid */
     .collage{height:auto;display:grid;grid-template-columns:1fr 1fr;gap:8px}
     .photo, .photo.p1, .photo.p2, .photo.p3, .photo.p4{position:static;top:auto;right:auto;bottom:auto;left:auto;width:100%;height:auto;aspect-ratio:1;transform:none !important;border-radius:10px}
-    .photo:hover{transform:scale(1.02) !important}
     .photo img{position:static !important;width:100% !important;height:100% !important;object-fit:cover}
     .photo image-slot{position:static;display:block;width:100%;height:100%}
 
@@ -1612,6 +1611,12 @@
       setTimeout(()=>{ popover.hidden = true; }, 200);
     }
     closeBtn.addEventListener('click', hidePopover);
+    document.body.onclick = document.body.onclick || function(){}; // WebKit/iOS only synthesizes a click from a touch tap on elements without their own handler when an ancestor has one
+    document.addEventListener('click', function(e){
+      if(popover.hidden || !popover.classList.contains('open')) return;
+      if(popover.contains(e.target) || e.target.closest('#open-tweaks')) return;
+      hidePopover();
+    });
     magicEl.addEventListener('change', () => {
       state.magic = magicEl.checked;
       save(); applyState();
@@ -1619,6 +1624,13 @@
 
     window.openTweaks = showPopover;
     window.closeTweaks = hidePopover;
+  })();
+</script>
+<script>
+  (function(){
+    var p = document.querySelector('.hero-portrait');
+    if(!p) return;
+    p.addEventListener('click', function(){ p.classList.toggle('flip'); });
   })();
 </script>
 </body>
