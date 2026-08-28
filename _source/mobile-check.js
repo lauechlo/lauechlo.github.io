@@ -26,8 +26,7 @@ const VIEWPORTS = [
         try {
           await page.goto(BASE + path, { waitUntil: 'networkidle' });
         } catch (e) {
-          console.log(`cannot reach ${BASE} — is the server running?`);
-          process.exit(1);
+          throw new Error(`cannot reach ${BASE + path} — is the server running? (${e.message})`);
         }
         const m = await page.evaluate(() => {
           const q = s => document.querySelector(s);
@@ -65,6 +64,6 @@ const VIEWPORTS = [
   } finally {
     await browser.close();
   }
-  if (failures.length) { console.log('FAIL\n' + failures.join('\n')); process.exit(1); }
+  if (failures.length) { console.log('FAIL\n' + failures.join('\n')); process.exitCode = 1; }
   console.log('PASS: all mobile checks green');
-})();
+})().catch(e => { console.error(e.message); process.exitCode = 1; });
