@@ -496,7 +496,7 @@
     .project .read-link{opacity:1;font-size:18px;bottom:12px;right:14px}
 
     /* Projects-compact → single column */
-    .projects-compact{grid-template-columns:1fr}
+    .projects-compact, .projects-compact.side-quests{grid-template-columns:1fr;gap:12px}
     .project-compact{padding:16px 18px;padding-bottom:32px}
     .project-compact h3{font-size:19px}
     .project-compact .read-link{opacity:1;font-size:18px;bottom:10px;right:14px}
@@ -512,6 +512,7 @@
     .about-wrap{grid-template-columns:1fr;gap:28px}
     .about-prose .lead{font-size:20px;line-height:1.35}
     .about-prose p{font-size:14px;line-height:1.6}
+    .fav-strip{grid-template-columns:1fr;gap:14px}
     .fav-card{grid-template-columns:80px 1fr;padding:10px;gap:10px}
     .fav-ttl{font-size:16px}
     .fav-note{font-size:11.5px}
@@ -519,9 +520,10 @@
 
     /* Photo collage → 2x2 static grid */
     .collage{height:auto;display:grid;grid-template-columns:1fr 1fr;gap:8px}
-    .photo{position:static;width:100%;height:auto;aspect-ratio:1;transform:none !important;border-radius:10px}
+    .photo, .photo.p1, .photo.p2, .photo.p3, .photo.p4{position:static;top:auto;right:auto;bottom:auto;left:auto;width:100%;height:auto;aspect-ratio:1;transform:none !important;border-radius:10px}
     .photo:hover{transform:scale(1.02) !important}
     .photo img{position:static !important;width:100% !important;height:100% !important;object-fit:cover}
+    .photo image-slot{position:static;display:block;width:100%;height:100%}
 
     /* Résumé single column */
     .resume{grid-template-columns:1fr;gap:14px}
