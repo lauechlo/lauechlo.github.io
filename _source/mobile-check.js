@@ -32,32 +32,34 @@ const VIEWPORTS = [
         }
         const m = await page.evaluate(() => {
           const q = s => document.querySelector(s);
-          const cols = s => q(s) ? getComputedStyle(q(s)).gridTemplateColumns.split(' ').length : null;
-          const hdr = q('.topnav') || q('.topbar');
-          const p1 = q('.photo.p1');
           return {
             overflow: document.documentElement.scrollWidth - window.innerWidth,
-            headerH: hdr ? hdr.getBoundingClientRect().height : 0,
-            sideQuestCols: cols('.projects-compact.side-quests'),
-            favCols: cols('.fav-strip'),
-            photoW: p1 ? p1.getBoundingClientRect().width : null,
-            collageW: q('.collage') ? q('.collage').getBoundingClientRect().width : null,
-            tinyText: [...document.querySelectorAll('.card .lbl,.card .delta,.post-date,.channel-lbl')]
-              .filter(e => parseFloat(getComputedStyle(e).fontSize) < 12).length,
-            mobileMeShown: q('.mobile-me') ? getComputedStyle(q('.mobile-me')).display !== 'none' : false,
+            headerH: (q('.topbar') || q('.top')) ? (q('.topbar') || q('.top')).getBoundingClientRect().height : 0,
+            workRows: document.querySelectorAll('a.work').length,
+            nowRows: document.querySelectorAll('.now li').length,
+            tinyText: [...document.querySelectorAll('body *')]
+              .filter(e => e.childNodes.length && [...e.childNodes].some(n => n.nodeType === 3 && n.textContent.trim()))
+              .filter(e => getComputedStyle(e).display !== 'none' && parseFloat(getComputedStyle(e).fontSize) < 12).length,
+            upperCase: [...document.querySelectorAll('body *')]
+              .filter(e => getComputedStyle(e).display !== 'none' && getComputedStyle(e).textTransform === 'uppercase' && e.closest('#tweaks-popover') === null).length,
+            boxes: [...document.querySelectorAll('main *')]
+              .filter(e => { const s = getComputedStyle(e); return e.tagName !== 'IMG' && e.tagName !== 'IFRAME' && parseFloat(s.borderRadius) > 8 && s.borderStyle !== 'none' && s.borderWidth !== '0px'; }).length,
+            fraunces: !![...document.styleSheets].find(ss => (ss.href||'').includes('Fraunces')) || !![...document.querySelectorAll('link')].find(l => (l.href||'').includes('Fraunces')),
+            emDash: (document.querySelector('main')?.innerText || '').includes('—'),
           };
         });
-        const isMobile = vp.viewport.width < 768;
         const fail = (what) => failures.push(`${vp.name} ${path}: ${what}`);
         if (m.overflow > 0) fail(`horizontal overflow ${m.overflow}px`);
         if (m.headerH > 64) fail(`header ${Math.round(m.headerH)}px tall`);
-        if (path === '/index.html' && isMobile) {
-          if (m.sideQuestCols !== 1) fail(`side-quests has ${m.sideQuestCols} cols`);
-          if (m.favCols !== 1) fail(`fav-strip has ${m.favCols} cols`);
-          if (m.photoW < m.collageW * 0.45) fail(`collage photo only ${Math.round(m.photoW)}px wide`);
-          if (m.tinyText > 0) fail(`${m.tinyText} labels under 12px`);
-          if (m.mobileMeShown) fail(`.mobile-me still shown`);
+        if (path === '/index.html') {
+          if (m.workRows !== 4) fail(`expected 4 a.work rows, found ${m.workRows}`);
+          if (m.nowRows !== 4) fail(`expected 4 .now rows, found ${m.nowRows}`);
+          if (m.upperCase > 0) fail(`${m.upperCase} uppercase-transformed elements`);
+          if (m.boxes > 0) fail(`${m.boxes} card-like boxes (radius>8 with border) in main`);
+          if (m.fraunces) fail(`Fraunces still loaded`);
+          if (m.emDash) fail(`em dash in homepage copy`);
         }
+        if (m.tinyText > 0) fail(`${m.tinyText} text elements under 12px`);
         errors.forEach(fail);
         await page.close();
       }
