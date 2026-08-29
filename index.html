@@ -460,13 +460,13 @@
     /* App layout */
     main{padding:20px 20px 64px;max-width:100%;margin:0}
     [data-density="compact"]{--gap-section:28px}
-    h2.sect{font-size:22px;flex-wrap:wrap}
+    h2.sect{font-size:24px;flex-wrap:wrap}
 
     /* Top nav: brand + CTA only; section links are one scroll away */
     .topnav{padding:10px 16px}
     .topnav-brand{white-space:nowrap}
     .topnav-links{gap:12px}
-    .topnav-links a:not(.topnav-cta){display:none}
+    .topnav-links a{display:none}
     .topnav-cta{padding:7px 12px;white-space:nowrap}
     /* Sticky nav already shows the name; drop the duplicate strip */
     .mobile-me{display:none}
@@ -1613,7 +1613,6 @@
       setTimeout(()=>{ popover.hidden = true; }, 200);
     }
     closeBtn.addEventListener('click', hidePopover);
-    document.body.onclick = document.body.onclick || function(){}; // WebKit/iOS only synthesizes a click from a touch tap on elements without their own handler when an ancestor has one
     document.addEventListener('click', function(e){
       if(popover.hidden || !popover.classList.contains('open')) return;
       if(popover.contains(e.target) || e.target.closest('#open-tweaks')) return;
@@ -1632,7 +1631,11 @@
   (function(){
     var p = document.querySelector('.hero-portrait');
     if(!p) return;
-    p.addEventListener('click', function(){ p.classList.toggle('flip'); });
+    document.body.onclick = document.body.onclick || function(){}; // WebKit/iOS only synthesizes a click from a touch tap on elements without their own handler when an ancestor has one
+    // Only devices without real hover need a tap toggle; hover-capable devices already get the CSS :hover flip.
+    if(!window.matchMedia('(hover:hover)').matches){
+      p.addEventListener('click', function(){ p.classList.toggle('flip'); });
+    }
   })();
 </script>
 </body>

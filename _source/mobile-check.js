@@ -1,4 +1,6 @@
 // _source/mobile-check.js — run: node _source/mobile-check.js
+// Lives in _source/ (Jekyll skips _-prefixed dirs, so GitHub Pages does not publish it).
+// Do not add a .nojekyll file without moving this.
 const { execSync } = require('child_process');
 try { module.paths.push(execSync('npm root -g', { encoding: 'utf8' }).trim()); } catch (_) {}
 const { webkit, devices } = require('playwright');
