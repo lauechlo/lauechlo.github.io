@@ -38,8 +38,7 @@ const VIEWPORTS = [
             workRows: document.querySelectorAll('a.work').length,
             nowRows: document.querySelectorAll('.now li').length,
             tinyText: [...document.querySelectorAll('body *')]
-              .filter(e => e.childNodes.length && [...e.childNodes].some(n => n.nodeType === 3 && n.textContent.trim()))
-              .filter(e => getComputedStyle(e).display !== 'none' && parseFloat(getComputedStyle(e).fontSize) < 12).length,
+              .filter(e => e.closest('#tweaks-popover') === null && e.getClientRects().length > 0 && parseFloat(getComputedStyle(e).fontSize) < 12).length,
             upperCase: [...document.querySelectorAll('body *')]
               .filter(e => getComputedStyle(e).display !== 'none' && getComputedStyle(e).textTransform === 'uppercase' && e.closest('#tweaks-popover') === null).length,
             boxes: [...document.querySelectorAll('main *')]
