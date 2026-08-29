@@ -215,7 +215,7 @@ article ul li::marker{color:var(--slate)}
 /* Tap targets: min 44px height for touch accessibility */
 .subindex a{display:inline-block;padding:8px 0}
 .article-footer a{display:inline-block;padding:8px 0}
-.topbar .crumb{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:55%}
+.topbar .crumb{min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:55%}
 
 @media (max-width:767px){
   .topbar{padding:12px 20px}
