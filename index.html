@@ -365,8 +365,8 @@
   </div>
 
   <!-- CONTACT -->
-  <h2 class="sect" id="contact">Let's build something.</h2>
-  <p>Email is best. Reach me at <a href="mailto:chloelau@princeton.edu">chloelau@princeton.edu</a>.</p>
+  <h2 class="sect" id="contact">Say hello</h2>
+  <p>Reach me at <a href="mailto:chloelau@princeton.edu">chloelau@princeton.edu</a>.</p>
   <div class="channels">
     <a class="channel" href="mailto:chloelau@princeton.edu" aria-label="Email"><img src="assets/logos/gmail-logo.png" alt="" /><span class="channel-lbl">Email</span></a>
     <a class="channel" href="https://www.linkedin.com/in/chloe-hc-lau/" target="_blank" rel="noopener" aria-label="LinkedIn profile"><img src="assets/logos/linkedin-logo.png" alt="" /><span class="channel-lbl">LinkedIn</span></a>
@@ -504,8 +504,25 @@
     const now = new Date();
     const start = new Date(now.getFullYear(), 0, 0);
     const day = Math.floor((now - start) / 86400000);
-    const title = tracks[day % tracks.length];
-    els.forEach(el => { el.textContent = title; });
+    let current = day % tracks.length;
+    function pickT(i){ els.forEach(el => { el.textContent = tracks[((i % tracks.length) + tracks.length) % tracks.length]; }); }
+    pickT(current);
+    // Click → swap to a different random track, with a fade (matches Reading)
+    els.forEach(el => {
+      el.style.cursor = 'pointer';
+      el.style.transition = 'opacity .25s ease';
+      el.title = 'tap for another';
+      el.addEventListener('click', ()=>{
+        els.forEach(e => e.style.opacity = '0');
+        setTimeout(()=>{
+          let next = current;
+          while(next === current && tracks.length > 1) next = (Math.random()*tracks.length)|0;
+          current = next;
+          pickT(current);
+          els.forEach(e => e.style.opacity = '1');
+        }, 250);
+      });
+    });
   })();
 
   // ────────── MAGIC LAYER ──────────
