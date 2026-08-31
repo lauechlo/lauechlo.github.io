@@ -81,10 +81,12 @@
   a.work{display:grid;grid-template-columns:96px 1fr;gap:16px;margin:0 0 18px;color:var(--ink);text-decoration:none;align-items:start}
   a.work .thumb{aspect-ratio:16/10;overflow:hidden;background:var(--bone-2)}
   a.work .thumb img{width:100%;height:100%;object-fit:cover}
-  a.work .meta{margin:0 0 2px}
+  a.work .meta{margin:0 0 2px;display:flex;justify-content:space-between;gap:12px}
   a.work b{font-weight:500}
   a.work p{margin:0}
   .arr{color:var(--forest);margin-left:6px;display:inline-block;transition:transform .15s ease}
+  .list .gh{width:14px;height:14px;display:inline-block;vertical-align:-2px;margin-left:6px;opacity:.7}
+  .list a:hover .gh{opacity:1}
   a.work:hover .arr,.list a:hover .arr{transform:translateX(4px)}
 
   /* Dated lists (side quests, notebook) */
@@ -108,7 +110,7 @@
   .res-col ul{list-style:none;margin:0;padding:0}
   .res-col li{display:grid;grid-template-columns:24px 1fr;gap:10px;padding:7px 0;border-top:1px solid var(--line);align-items:start}
   .res-col li:last-child{border-bottom:1px solid var(--line)}
-  .res-col img{width:24px;height:24px;object-fit:contain;filter:grayscale(1) contrast(1.1);opacity:.85}
+  .res-col img{width:24px;height:24px;object-fit:contain}
   .res-col .who{display:block;font-size:15px;line-height:1.3}
   .res-col .who a{color:var(--ink)}
   .res-col .what{display:block}
@@ -138,6 +140,8 @@
     .lede{font-size:20px}
     a.work{grid-template-columns:72px 1fr;gap:12px}
     .list li{grid-template-columns:64px 1fr}
+    a.work .meta{display:block}
+    a.work .md{display:block;margin-top:1px}
     .now li{grid-template-columns:18px 84px 1fr}
     .resume{grid-template-columns:1fr;gap:18px}
     .channels{gap:16px}
@@ -236,13 +240,13 @@
 <main id="top">
   <div class="top">
     <a class="brand" href="#top">Chloe Lau</a>
-    <nav><a href="#writing">Writing</a><a href="https://docs.google.com/document/d/1mCoQ4bUgjqYYhguAibcJrps6crtFf7iN9demG4JG56c/preview" target="_blank" rel="noopener">Résumé ↗</a><a href="mailto:chloelau@princeton.edu">Email</a></nav>
+    <nav><a href="#projects">Case studies</a><a href="#quests">Side quests</a><a href="#writing">Writing</a><a href="https://docs.google.com/document/d/1mCoQ4bUgjqYYhguAibcJrps6crtFf7iN9demG4JG56c/preview" target="_blank" rel="noopener">Résumé ↗</a><a href="mailto:chloelau@princeton.edu">Email</a></nav>
   </div>
 
   <!-- INTRO -->
   <section class="intro">
     <div>
-      <p class="lede">I came to Princeton for psychology and ended up running product.</p>
+      <p class="lede">I grew up in music and came to Princeton for psychology. Product turned out to be where they meet: talking with people from very different backgrounds and getting them building in the same direction.</p>
       <p>Right now that means Hoagie, a lab I started for non-CS students, and this past summer on Disney+ Search.</p>
       <p>Recruiting for full-time PM and Applied AI roles, starting 2027.</p>
     </div>
@@ -266,58 +270,57 @@
   <a class="work" href="case-studies/disney.html">
     <div class="thumb"><img src="assets/disney-plus-search.png" alt="" loading="lazy" decoding="async" /></div>
     <div>
-      <p class="meta">PM Intern, Disney+ Search, Summer '26</p>
+      <p class="meta"><span>PM Intern, Disney+ Search</span><span class="md">Summer '26</span></p>
       <p><b>Users couldn't find what they loved. The team couldn't see why.</b> Four projects in ten weeks.<span class="arr">→</span></p>
     </div>
   </a>
   <a class="work" href="case-studies/hoagie.html">
     <div class="thumb"><img src="assets/hoagie-apps-showcase-homepage.png" alt="" loading="lazy" decoding="async" /></div>
     <div>
-      <p class="meta">Head of Product, Hoagie, Sep '25 to Now</p>
+      <p class="meta"><span>Head of Product, Hoagie</span><span class="md">Sep '25 to Now</span></p>
       <p><b>From one product to six.</b> HoagieMail worked fine, it just wasn't good, which is a different problem.<span class="arr">→</span></p>
     </div>
   </a>
   <a class="work" href="case-studies/cariina.html">
     <div class="thumb"><img src="assets/cariina-districts.png" alt="" loading="lazy" decoding="async" /></div>
     <div>
-      <p class="meta">Product Success Intern, Cariina, Summer '25</p>
+      <p class="meta"><span>Product Success Intern, Cariina</span><span class="md">Summer '25</span></p>
       <p><b>Dashboards for districts that had stopped logging in.</b> 20 K-12 districts had ghosted and the CEO wanted more features.<span class="arr">→</span></p>
     </div>
   </a>
   <a class="work" href="case-studies/ai-fluency-lab.html">
     <div class="thumb"><img src="assets/ai-fluency-lab-group.jpg" alt="" loading="lazy" decoding="async" /></div>
     <div>
-      <p class="meta">Founder &amp; Co-Lead, Princeton AI Lab, '25 to Now</p>
+      <p class="meta"><span>Founder &amp; Co-Lead, Princeton AI Lab</span><span class="md">'25 to Now</span></p>
       <p><b>Teaching AI to students outside computer science.</b> A Spring 2026 pilot for the students who get left out of campus AI classes, humanities, social sciences, non-CS STEM, etc.<span class="arr">→</span></p>
     </div>
   </a>
 
   <!-- SIDE QUESTS -->
-  <h2 class="sect">Side quests</h2>
+  <h2 class="sect" id="quests">Side quests</h2>
   <ul class="list">
-    <li><span class="d">2025</span><a href="https://github.com/lauechlo/unwrapped" target="_blank" rel="noopener"><b>Unwrapped.</b> Spotify Wrapped tells you what you played. This tries to tell you why.<span class="arr">→</span></a></li>
-    <li><span class="d">2025</span><a href="https://github.com/lauechlo/claude-mcp-workshop" target="_blank" rel="noopener"><b>Spotify MCP.</b> 12 tools connecting Claude to Spotify. I built it for a workshop and kept using it.<span class="arr">→</span></a></li>
-    <li><span class="d">2026</span><a href="https://github.com/lauechlo/Music-Emotion-Recognition-and-Playlist-Sequencing" target="_blank" rel="noopener"><b>Music sequencing.</b> I built a coherence metric for playlist order, then beat random shuffling by 39% across 114K tracks.<span class="arr">→</span></a></li>
+    <li><span class="d">2025</span><a href="https://github.com/lauechlo/unwrapped" target="_blank" rel="noopener"><b>Unwrapped.</b> Spotify Wrapped tells you what you played. This tries to tell you why.<img class="gh" src="assets/logos/github-logo.png" alt="GitHub" /></a></li>
+    <li><span class="d">2025</span><a href="https://github.com/lauechlo/claude-mcp-workshop" target="_blank" rel="noopener"><b>Spotify MCP.</b> 12 tools connecting Claude to Spotify. I built it for a workshop and kept using it.<img class="gh" src="assets/logos/github-logo.png" alt="GitHub" /></a></li>
+    <li><span class="d">2026</span><a href="https://github.com/lauechlo/Music-Emotion-Recognition-and-Playlist-Sequencing" target="_blank" rel="noopener"><b>Music sequencing.</b> I built a coherence metric for playlist order, then beat random shuffling by 39% across 114K tracks.<img class="gh" src="assets/logos/github-logo.png" alt="GitHub" /></a></li>
   </ul>
 
   <!-- WRITING -->
   <h2 class="sect" id="writing">From the notebook</h2>
   <ul class="list">
-    <li><span class="d">Dec 2025</span><a class="title" href="essays/500ms-sound.html">Why 500 milliseconds of sound creates entire narratives.</a></li>
-    <li><span class="d">May 2026</span><a class="title" href="essays/working-with-ai.html">Working with AI like it's a product sprint.</a></li>
-    <li><span class="d">Sep 2025</span><a class="title" href="essays/major-as-method.html">Hong Kong, a harp, and how I ended up in product.</a></li>
+    <li><span class="d">Aug 2026</span><a class="title" href="essays/500ms-sound.html">Why 500 milliseconds of sound creates entire narratives.</a></li>
+    <li><span class="d">Jul 2026</span><a class="title" href="essays/working-with-ai.html">Working with AI like it's a product sprint.</a></li>
+    <li><span class="d">Jun 2026</span><a class="title" href="essays/major-as-method.html">Hong Kong, a harp, and how I ended up in product.</a></li>
   </ul>
 
   <!-- ABOUT -->
   <h2 class="sect" id="about">A few things about me</h2>
-  <p>I grew up between classical music and code. The plan was a psychology degree, and product is just what it turned into.</p>
-  <p>Outside of work I play the harp, sing jazz a cappella, hike whenever I can find a trail, and drink an unreasonable amount of cheese foam boba.</p>
+  <p>I grew up with music. Psychology taught me to ask questions without leading the answer, and the music cognition lab got me comfortable sitting with 300 free-text responses until one signal shows up. What I keep finding is that I love connecting with different kinds of communities, and building things that actually change something for them. Outside of work I play the harp, hike whenever I can find a trail, and log every new restaurant and dessert shop I try on Beli.</p>
   <div class="photos">
     <img src="assets/harp-orchestra.jpg" alt="Playing harp with the orchestra" loading="lazy" decoding="async" />
     <img src="assets/rainier-hike.jpg" alt="Hiking near Mount Rainier" loading="lazy" decoding="async" />
   </div>
   <p class="cap">Harp with the orchestra. Rainier.</p>
-  <p>I'm <b><a href="http://www.theprincetonkatzenjammers.com/" target="_blank" rel="noopener">President of the Princeton Katzenjammers</a></b>, the oldest co-ed a cappella group in the Ivy League. This is what we sound like, recorded for our 50th anniversary.</p>
+  <p>Making music with people is also how I ended up in the <a href="http://www.theprincetonkatzenjammers.com/" target="_blank" rel="noopener">Princeton Katzenjammers</a>, the oldest co-ed a cappella group in the Ivy League. I'm the president, and I've led the group on tour to Montreal, with DC and Korea coming up (Tokyo happened back when I was just a member). This is what we sound like, recorded for our 50th anniversary.</p>
   <iframe class="katz" data-testid="embed-iframe"
     src="https://open.spotify.com/embed/album/6jVoaWRSSQoekSZsTVQ8RS?utm_source=generator"
     width="100%" height="152" frameBorder="0" allowfullscreen=""
