@@ -103,7 +103,9 @@
 
 
   .katz{display:block;border:0;border-radius:6px;width:100%;margin:8px 0 14px}
-  .slides{position:relative;aspect-ratio:3/2;overflow:hidden;margin:12px 0 14px;background:var(--bone-2)}
+  .about-grid{display:grid;grid-template-columns:1fr 220px;gap:26px;align-items:start;margin-bottom:14px}
+  .about-grid p:last-child{margin-bottom:0}
+  .slides{position:relative;aspect-ratio:1;overflow:hidden;border-radius:6px;background:var(--bone-2)}
   .slides img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .9s ease}
   .slides img.on{opacity:1}
 
@@ -143,6 +145,8 @@
     .lede{font-size:20px}
     a.work{grid-template-columns:72px 1fr;gap:12px}
     .list li{grid-template-columns:64px 1fr}
+    .about-grid{grid-template-columns:1fr;gap:16px}
+    .slides{max-width:320px}
     a.work .meta{display:block}
     a.work .md{display:block;margin-top:1px}
     .now li{grid-template-columns:18px 84px 1fr}
@@ -305,8 +309,11 @@
 
   <!-- ABOUT -->
   <h2 class="sect" id="about">A few things about me</h2>
-  <p>Music was the first thing I was ever serious about. Psychology taught me to ask questions without leading the answer, and the music cognition lab got me comfortable sitting with 300 free-text responses until one signal shows up. What I keep finding is that I love connecting with different kinds of communities, and building things that actually change something for them. Outside of work I play the harp, hike whenever I can find a trail, and log every new restaurant and dessert shop I try on Beli.</p>
-  <div class="slides" id="slides">
+  <section class="about-grid">
+    <div>
+      <p>Music was the first thing I was ever serious about. Psychology taught me to ask questions without leading the answer, and the music cognition lab got me comfortable sitting with 300 free-text responses until one signal shows up. What I keep finding is that I love connecting with different kinds of communities, and building things that actually change something for them. Outside of work I play the harp, hike whenever I can find a trail, and log every new restaurant and dessert shop I try on Beli.</p>
+    </div>
+    <div class="slides" id="slides">
     <img class="on" src="assets/harp-orchestra.jpg" alt="Playing harp with the orchestra" decoding="async" />
     <img src="assets/rainier-hike.jpg" alt="Hiking near Mount Rainier" loading="lazy" decoding="async" />
     <img src="assets/seattle-skyline.jpg" alt="Chloe at Kerry Park with the Seattle skyline behind her" loading="lazy" decoding="async" style="object-position:50% 30%" />
@@ -316,6 +323,7 @@
     <img src="assets/ai-fluency-lab-group.jpg" alt="The AI Exploration Lab cohort" loading="lazy" decoding="async" />
     <img src="assets/music-cognition-members.JPG" alt="With the Music Cognition Lab" loading="lazy" decoding="async" />
   </div>
+  </section>
   <p>Making music with people is also how I ended up in the <a href="http://www.theprincetonkatzenjammers.com/" target="_blank" rel="noopener">Princeton Katzenjammers</a>, the oldest co-ed a cappella group in the Ivy League. I'm the president, and I've led the group on tour to Montreal, with DC and Korea coming up. This is what we sound like, recorded for our 50th anniversary.</p>
   <iframe class="katz" data-testid="embed-iframe"
     src="https://open.spotify.com/embed/album/6jVoaWRSSQoekSZsTVQ8RS?utm_source=generator"
@@ -384,7 +392,7 @@
       <span class="twk-lbl">Enabled</span>
       <label class="twk-switch"><input type="checkbox" id="twk-magic" /><span></span></label>
     </div>
-    <div class="twk-note">You found the fun part. Flip the switch, then move your mouse around.</div>
+    <div class="twk-note">Surprise! Click and move your mouse around</div>
   </div>
 </div>
 
