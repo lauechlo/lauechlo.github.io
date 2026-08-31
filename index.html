@@ -153,7 +153,9 @@
     *{-webkit-print-color-adjust:exact !important;print-color-adjust:exact !important}
     .harp-curtain, .lantern-curtain, #tweaks-popover, .foot button, .toast, .magic-particle{display:none !important}
     .top nav{display:none}
-    a.work .arr, .list .gh{display:none}
+    a.work .arr, .list .gh, h2.sect .cta{display:none}
+    .resume{grid-template-columns:repeat(3,1fr)}
+    .intro{grid-template-columns:1fr 150px}
   }
 
   /* ─── Tweaks popover (vanilla) ─── */
@@ -404,7 +406,6 @@
 
 
 <script>
-  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const toast = document.getElementById('toast');
   function showToast(msg){
     toast.textContent = msg;
@@ -724,7 +725,7 @@
   }
 
   // ────────── TWEAKS PANEL OPENER ──────────
-  // Doors: colophon button, topnav ✦ glyph, typing "magic".
+  // Door: colophon button ("click for magic").
   const tweaksBtn = document.getElementById('open-tweaks');
   if(tweaksBtn) tweaksBtn.addEventListener('click', ()=>window.openTweaks && window.openTweaks());
   let twkBuf = '';

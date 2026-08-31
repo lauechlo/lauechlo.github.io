@@ -89,7 +89,6 @@ article{
   background:var(--bone-2);}
 .figure figcaption{
   font-family:var(--font-meta);
-  font-style:italic;
   font-size:13.5px;
   color:var(--muted);
   margin-top:10px;
@@ -116,8 +115,8 @@ article h1 em{
   line-height:1.5;
   margin-bottom:6px;}
 .meta-block{margin-bottom:44px}
-.my-role{font-family:var(--font-meta);font-style:italic;font-size:15px;color:var(--muted);margin:14px 0 32px;padding:14px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);line-height:1.6}
-.my-role b{font-style:normal;font-weight:600;letter-spacing:0.02em;text-transform:uppercase;font-size:12.5px;display:block;margin-bottom:4px;color:var(--slate)}
+.my-role{font-family:var(--font-meta);font-size:15px;color:var(--muted);margin:14px 0 32px;padding:14px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);line-height:1.6}
+.my-role b{font-style:normal;font-weight:600;font-size:12.5px;display:block;margin-bottom:4px;color:var(--slate)}
 
 /* Section headings inside article */
 article h2{
