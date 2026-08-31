@@ -59,9 +59,9 @@
   .top nav a:hover{color:var(--ink)}
 
   /* Intro */
-  .intro{display:grid;grid-template-columns:1fr 150px;gap:26px;align-items:center}
+  .intro{display:grid;grid-template-columns:1fr 180px;gap:26px;align-items:stretch}
   .lede{font-size:22px;line-height:1.3;margin-bottom:12px}
-  .headshot{aspect-ratio:1;border-radius:6px;overflow:hidden;background:var(--bone-2)}
+  .headshot{height:100%;min-height:150px;border-radius:6px;overflow:hidden;background:var(--bone-2)}
   .headshot img{width:100%;height:100%;object-fit:cover;object-position:50% 32%}
 
   /* Section headings */
@@ -92,6 +92,7 @@
   /* Dated lists (side quests, notebook) */
   .list{list-style:none;margin:0;padding:0}
   .list li{display:grid;grid-template-columns:82px 1fr;gap:12px;padding:7px 0;border-top:1px solid var(--line)}
+  .list.no-dates li{grid-template-columns:1fr}
   .list li:last-child{border-bottom:1px solid var(--line)}
   .list .d{padding-top:4px}
   .list li>a{color:var(--ink);text-decoration:none}
@@ -103,9 +104,9 @@
 
 
   .katz{display:block;border:0;border-radius:6px;width:100%;margin:8px 0 14px}
-  .about-grid{display:grid;grid-template-columns:1fr 180px;gap:26px;align-items:center;margin-bottom:14px}
+  .about-grid{display:grid;grid-template-columns:1fr 220px;gap:26px;align-items:stretch;margin-bottom:14px}
   .about-grid p:last-child{margin-bottom:0}
-  .slides{position:relative;aspect-ratio:1;overflow:hidden;border-radius:6px;background:var(--bone-2)}
+  .slides{position:relative;height:100%;min-height:200px;overflow:hidden;border-radius:6px;background:var(--bone-2)}
   .slides img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .9s ease}
   .slides img.on{opacity:1}
 
@@ -146,7 +147,7 @@
     a.work{grid-template-columns:72px 1fr;gap:12px}
     .list li{grid-template-columns:64px 1fr}
     .about-grid{grid-template-columns:1fr;gap:16px}
-    .slides{max-width:320px}
+    .slides{height:260px}
     a.work .meta{display:block}
     a.work .md{display:block;margin-top:1px}
     .now li{grid-template-columns:18px 84px 1fr}
@@ -236,7 +237,7 @@
 <main id="top">
   <div class="top">
     <a class="brand" href="#top">Chloe Lau</a>
-    <nav><a href="#projects">Case studies</a><a href="#quests">Side quests</a><a href="#writing">Writing</a><a href="https://docs.google.com/document/d/1mCoQ4bUgjqYYhguAibcJrps6crtFf7iN9demG4JG56c/preview" target="_blank" rel="noopener">Résumé ↗</a><a href="mailto:chloelau@princeton.edu">Email</a></nav>
+    <nav><a href="#projects">Case studies</a><a href="#quests">Side quests</a><a href="#writing">Blogs</a><a href="https://docs.google.com/document/d/1mCoQ4bUgjqYYhguAibcJrps6crtFf7iN9demG4JG56c/preview" target="_blank" rel="noopener">Résumé ↗</a><a href="mailto:chloelau@princeton.edu">Email</a></nav>
   </div>
 
   <!-- INTRO -->
@@ -293,14 +294,14 @@
 
   <!-- SIDE QUESTS -->
   <h2 class="sect" id="quests">Side quests</h2>
-  <ul class="list">
-    <li><span class="d">2025</span><a href="https://github.com/lauechlo/unwrapped" target="_blank" rel="noopener"><b>Unwrapped:</b> pulls your Spotify history apart to figure out why you played what you played.<img class="gh" src="assets/logos/github-logo.png" alt="GitHub" /></a></li>
-    <li><span class="d">2025</span><a href="https://github.com/lauechlo/claude-mcp-workshop" target="_blank" rel="noopener"><b>Spotify MCP:</b> 12 tools connecting Claude to Spotify. I built it for a workshop and kept using it.<img class="gh" src="assets/logos/github-logo.png" alt="GitHub" /></a></li>
-    <li><span class="d">2026</span><a href="https://github.com/lauechlo/Music-Emotion-Recognition-and-Playlist-Sequencing" target="_blank" rel="noopener"><b>Music sequencing:</b> a coherence metric for playlist order. It beat random shuffling by 39% across 114K tracks.<img class="gh" src="assets/logos/github-logo.png" alt="GitHub" /></a></li>
+  <ul class="list no-dates">
+    <li><a href="https://github.com/lauechlo/unwrapped" target="_blank" rel="noopener"><b>Unwrapped:</b> pulls your Spotify history apart to figure out why you played what you played.<img class="gh" src="assets/logos/github-logo.png" alt="GitHub" /></a></li>
+    <li><a href="https://github.com/lauechlo/claude-mcp-workshop" target="_blank" rel="noopener"><b>Spotify MCP:</b> 12 tools connecting Claude to Spotify. I built it for a workshop and kept using it.<img class="gh" src="assets/logos/github-logo.png" alt="GitHub" /></a></li>
+    <li><a href="https://github.com/lauechlo/Music-Emotion-Recognition-and-Playlist-Sequencing" target="_blank" rel="noopener"><b>Music sequencing:</b> a coherence metric for playlist order. It beat random shuffling by 39% across 114K tracks.<img class="gh" src="assets/logos/github-logo.png" alt="GitHub" /></a></li>
   </ul>
 
   <!-- WRITING -->
-  <h2 class="sect" id="writing">From the notebook</h2>
+  <h2 class="sect" id="writing">Blogs</h2>
   <ul class="list">
     <li><span class="d">Aug 2026</span><a class="title" href="essays/500ms-sound.html">Why 500 milliseconds of sound creates entire narratives.</a></li>
     <li><span class="d">Jul 2026</span><a class="title" href="essays/working-with-ai.html">Working with AI like it's a product sprint.</a></li>
