@@ -475,9 +475,7 @@
     el.addEventListener('click', ()=>{
       el.style.opacity = '0';
       setTimeout(()=>{
-        let next = current;
-        while(next === current && books.length > 1) next = (Math.random()*books.length)|0;
-        current = next;
+        current = (current + 1) % books.length;
         pick(current);
         el.style.opacity = '1';
       }, 250);
@@ -511,9 +509,7 @@
       el.addEventListener('click', ()=>{
         els.forEach(e => e.style.opacity = '0');
         setTimeout(()=>{
-          let next = current;
-          while(next === current && tracks.length > 1) next = (Math.random()*tracks.length)|0;
-          current = next;
+          current = (current + 1) % tracks.length;
           pickT(current);
           els.forEach(e => e.style.opacity = '1');
         }, 250);
