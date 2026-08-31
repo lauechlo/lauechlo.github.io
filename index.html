@@ -255,8 +255,8 @@
     <ul class="now">
       <li data-icon="✦"><span class="k">Building</span><span>HoagieCalendar (beta)</span></li>
       <li data-icon="※"><span class="k">Researching</span><span>how <a href="essays/500ms-sound.html">500ms of sound</a> creates narrative</span></li>
-      <li data-icon="❀"><span class="k">Reading</span><span id="reading-rotation">The Creative Act · Rick Rubin</span></li>
-      <li data-icon="♪"><span class="k">Listening</span><span id="today-spin">La Source · Hasselmans</span></li>
+      <li data-icon="❀"><span class="k">Reading</span><span id="reading-rotation">The Creative Act by Rick Rubin</span></li>
+      <li data-icon="♪"><span class="k">Listening</span><span id="today-spin">La Source by Hasselmans</span></li>
     </ul>
   </section>
 
@@ -434,37 +434,37 @@
     const el = document.getElementById('reading-rotation');
     if(!el) return;
     const books = [
-      'A Little Life · Hanya Yanagihara',
-      'Tuesdays with Morrie · Mitch Albom',
-      'Roman Stories · Jhumpa Lahiri',
-      'All the Light We Cannot See · Anthony Doerr',
-      'Me Before You · Jojo Moyes',
-      'Persuasion · Jane Austen',
-      'Sense & Sensibility · Jane Austen',
-      'The Secret History · Donna Tartt',
-      'Wuthering Heights · Emily Brontë',
-      'Beloved · Toni Morrison',
-      'Let the Great World Spin · Colum McCann',
-      'The Color Purple · Alice Walker',
-      'Yellowface · R.F. Kuang',
-      'Galatea · Madeline Miller',
-      'Normal People · Sally Rooney',
-      'The Oresteia · Aeschylus',
-      'The Alexiad · Anna Komnene',
-      'Purgatorio · Dante Alighieri',
-      'Inferno · Dante Alighieri',
-      'The Metamorphosis · Franz Kafka',
-      'The Song of Achilles · Madeline Miller',
-      'Harry Potter · J.K. Rowling',
-      'Six of Crows · Leigh Bardugo',
-      'A Farewell to Arms · Ernest Hemingway',
-      'Crying in H Mart · Michelle Zauner',
-      "On Earth We're Briefly Gorgeous · Ocean Vuong",
-      'And Then There Were None · Agatha Christie',
-      'Death of a Salesman · Arthur Miller',
-      'The Fault in Our Stars · John Green',
-      'The Great Gatsby · F. Scott Fitzgerald',
-      'Atonement · Ian McEwan'
+      'A Little Life by Hanya Yanagihara',
+      'Tuesdays with Morrie by Mitch Albom',
+      'Roman Stories by Jhumpa Lahiri',
+      'All the Light We Cannot See by Anthony Doerr',
+      'Me Before You by Jojo Moyes',
+      'Persuasion by Jane Austen',
+      'Sense & Sensibility by Jane Austen',
+      'The Secret History by Donna Tartt',
+      'Wuthering Heights by Emily Brontë',
+      'Beloved by Toni Morrison',
+      'Let the Great World Spin by Colum McCann',
+      'The Color Purple by Alice Walker',
+      'Yellowface by R.F. Kuang',
+      'Galatea by Madeline Miller',
+      'Normal People by Sally Rooney',
+      'The Oresteia by Aeschylus',
+      'The Alexiad by Anna Komnene',
+      'Purgatorio by Dante Alighieri',
+      'Inferno by Dante Alighieri',
+      'The Metamorphosis by Franz Kafka',
+      'The Song of Achilles by Madeline Miller',
+      'Harry Potter by J.K. Rowling',
+      'Six of Crows by Leigh Bardugo',
+      'A Farewell to Arms by Ernest Hemingway',
+      'Crying in H Mart by Michelle Zauner',
+      "On Earth We're Briefly Gorgeous by Ocean Vuong",
+      'And Then There Were None by Agatha Christie',
+      'Death of a Salesman by Arthur Miller',
+      'The Fault in Our Stars by John Green',
+      'The Great Gatsby by F. Scott Fitzgerald',
+      'Atonement by Ian McEwan'
     ];
     function pick(i){ el.textContent = books[((i % books.length) + books.length) % books.length]; }
     const now = new Date();
@@ -495,11 +495,11 @@
     const els = document.querySelectorAll('#today-spin');
     if(!els.length) return;
     const tracks = [
-      'La Source · Hasselmans',
-      'Rhapsodie · Marcel Grandjany',
-      'Die Moldau · Smetana',
-      'Watching the Wheat · John Thomas',
-      'Absidioles · Bernard Andrès'
+      'La Source by Hasselmans',
+      'Rhapsodie by Marcel Grandjany',
+      'Die Moldau by Smetana',
+      'Watching the Wheat by John Thomas',
+      'Absidioles by Bernard Andrès'
     ];
     const now = new Date();
     const start = new Date(now.getFullYear(), 0, 0);
@@ -622,7 +622,7 @@
     if(e.target.matches('input, textarea')) return;
     if(/^[a-z]$/i.test(e.key)){
       twkBuf = (twkBuf + e.key.toLowerCase()).slice(-5);
-      if(twkBuf === 'magic'){ window.openTweaks && window.openTweaks(); showToast('magic mode · ✨'); twkBuf = ''; }
+      if(twkBuf === 'magic'){ window.openTweaks && window.openTweaks(); showToast('magic mode by ✨'); twkBuf = ''; }
     }
   });
 
