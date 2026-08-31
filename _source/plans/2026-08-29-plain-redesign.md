@@ -390,3 +390,21 @@ git commit -m "docs: describe the plain homepage design system and v1-cards tag"
 ```
 
 Then hand off via superpowers:finishing-a-development-branch (merge to `main` is the owner's call; the old page remains at tag `v1-cards`).
+
+---
+
+### Task 7: Amendment 1 (owner copy + mechanical tweaks)
+
+**Files:**
+- Modify: `index.html`, `essays/working-with-ai.html`, `essays/500ms-sound.html`, `essays/major-as-method.html`
+
+Implement spec Amendment 1 exactly (the spec's copy is owner-approved verbatim; do not reword). Details:
+
+- [ ] **Step 1: Copy swaps** — lede (Amendment item 1), About paragraphs (item 2). No em dashes; keep existing links.
+- [ ] **Step 2: Nav** — item 3; the Side quests h2 gets `id="quests"`.
+- [ ] **Step 3: Side-quest GitHub mark** — item 4; add `.list .gh{width:14px;height:14px;display:inline-block;vertical-align:-2px;margin-left:6px;opacity:.7}` and `.list a:hover .gh{opacity:1}` to the stylesheet; remove the `.arr` span from side-quest rows only (work rows keep →).
+- [ ] **Step 4: Colour logos** — item 5.
+- [ ] **Step 5: Dates** — item 6: homepage list order Aug/Jul/Jun 2026; then update each essay page's own displayed date to match its homepage date (find the date element near the essay h1; change only the date text).
+- [ ] **Step 6: Work meta layout** — item 7: make `a.work .meta` a flex row (`display:flex;justify-content:space-between;gap:12px`), wrap the date in `<span class="md">`; mobile block adds `a.work .meta{display:block}` + `.md{display:block;margin-top:1px}`.
+- [ ] **Step 7: Verify** — `node _source/mobile-check.js` (no /index.html failures; no em dash; uppercase still 0); Playwright WebKit screenshots at 390 and 1280; console clean; grep both About paragraphs and the lede byte-for-byte against the spec.
+- [ ] **Step 8: Commit** — `feat: amendment 1, owner copy and nav/logo/date tweaks`

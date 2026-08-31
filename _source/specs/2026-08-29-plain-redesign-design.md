@@ -70,3 +70,19 @@ Sub-page layout changes, `srcset` image variants, `CNAME` change to chloelau.me,
 3. `grep -c "—" index.html` is 0 in visible copy.
 4. `git diff v1-cards -- index.html` shows every visible sentence in the new file exists in the old (spot-check 10 sentences).
 5. Desktop and sub-pages render with Newsreader; no request for Fraunces in the network log.
+
+## Amendment 1 (owner-approved 2026-08-31)
+
+Copy below is owner-approved verbatim; implementers copy it exactly. Everything else in this amendment is mechanical.
+
+1. **Lede** becomes two sentences (replaces the single lede sentence; the "Right now that means..." and "Recruiting..." lines stay):
+   "I grew up in music and came to Princeton for psychology. Product turned out to be where they meet: talking with people from very different backgrounds and getting them building in the same direction."
+2. **About** first paragraph and Katzenjammers paragraph are replaced with (photos + caption stay between them; Spotify embed follows para 2):
+   Para 1: "I grew up with music. Psychology taught me to ask questions without leading the answer, and the music cognition lab got me comfortable sitting with 300 free-text responses until one signal shows up. What I keep finding is that I love connecting with different kinds of communities, and building things that actually change something for them. Outside of work I play the harp, hike whenever I can find a trail, and log every new restaurant and dessert shop I try on Beli."
+   Para 2: "Making music with people is also how I ended up in the Princeton Katzenjammers, the oldest co-ed a cappella group in the Ivy League. I'm the president, and I've led the group on tour to Montreal, with DC and Korea coming up (Tokyo happened back when I was just a member). This is what we sound like, recorded for our 50th anniversary."
+   The Katzenjammers link stays on "Princeton Katzenjammers".
+3. **Top bar nav** becomes: Case studies (#projects) · Side quests (#quests; add id="quests" to that h2) · Writing (#writing) · Résumé ↗ · Email.
+4. **Side quests rows**: replace the trailing → with the GitHub mark `assets/logos/github-logo.png` as a 14px inline img at the end of the row (`class="gh"`, `filter:none`, `opacity:.7`, hover 1). Row still links to the repo.
+5. **Résumé logos in colour**: remove `filter:grayscale(1) contrast(1.1)` and `opacity:.85` from `.res-col img`.
+6. **Notebook dates** become, top to bottom: Aug 2026, Jul 2026, Jun 2026. Update the matching visible date on each essay page (`essays/*.html`) to agree.
+7. **Work row meta**: the meta line becomes `role, company` on the left and the date range right-aligned on the same line (flex, `justify-content:space-between`); on phones the date drops below the role, left-aligned, rather than squeezing.
