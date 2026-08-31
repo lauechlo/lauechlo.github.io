@@ -233,418 +233,143 @@
 </style>
 </head>
 <body data-magic="off">
-
-<div class="harp-curtain" id="harp-curtain"></div>
-<div class="lantern-curtain" id="lantern-curtain"></div>
-
-<!-- ─── Top nav ─── -->
-<header class="topnav">
-  <a class="topnav-brand" href="#top">Chloe Lau <em>'27</em></a>
-  <nav class="topnav-links">
-    <a href="#projects" data-jump="projects">Projects</a>
-    <a href="#writing"  data-jump="writing">Writing</a>
-    <a href="#about"    data-jump="about">About</a>
-    <a href="https://docs.google.com/document/d/1mCoQ4bUgjqYYhguAibcJrps6crtFf7iN9demG4JG56c/preview" target="_blank" rel="noopener">Résumé ↗</a>
-  </nav>
-  <a class="topnav-cta" href="#contact">Get in touch ↓</a>
-</header>
-
-<!-- ─── Main ─── -->
 <main id="top">
+  <div class="top">
+    <a class="brand" href="#top">Chloe Lau</a>
+    <nav><a href="#writing">Writing</a><a href="https://docs.google.com/document/d/1mCoQ4bUgjqYYhguAibcJrps6crtFf7iN9demG4JG56c/preview" target="_blank" rel="noopener">Résumé ↗</a><a href="mailto:chloelau@princeton.edu">Email</a></nav>
+  </div>
 
-    <!-- MOBILE TOP STRIP (hidden on desktop, shown <768px) -->
-    <div class="mobile-me">
-      <div class="av"><img src="assets/favicon-192.png" alt="Chloe" /></div>
-      <span class="n">Chloe Lau <em>'27</em></span>
+  <!-- INTRO -->
+  <section class="intro">
+    <div>
+      <p class="lede">I came to Princeton for psychology and ended up running product.</p>
+      <p>Right now that means Hoagie, a lab I started for non-CS students, and this past summer on Disney+ Search.</p>
+      <p>Recruiting for full-time PM and Applied AI roles, starting 2027.</p>
     </div>
+    <div class="headshot"><img src="assets/headshot.jpg" alt="Chloe Lau" width="150" height="150" /></div>
+  </section>
 
-    <!-- HERO -->
-    <section class="hero">
-      <div>
-        <h1>I came to Princeton for psychology and somehow ended up <em class="gr">running product</em>.</h1>
-        <p class="sub">Right now that means Hoagie, a lab I started for non-CS students, and this past summer on Disney+ Search.</p>
-        <p class="hero-recruit">Recruiting for full-time PM and Applied AI roles, starting 2027.</p>
-      </div>
-      <div class="hero-portrait" title="making magic from music to product">
-        <img class="portrait-img portrait-harp" src="assets/harp-portrait.jpg" alt="Chloe with her harp" />
-        <img class="portrait-img portrait-headshot" src="assets/headshot.jpg" alt="Chloe" />
-        <span class="portrait-cue" aria-hidden="true">⟳</span>
-      </div>
-    </section>
+  <!-- CURRENTLY -->
+  <section class="now" id="currently">
+    <h2 class="sect">Currently</h2>
+    <ul class="now">
+      <li data-icon="✦"><span class="k">Building</span><span>HoagieCalendar (beta)</span></li>
+      <li data-icon="※"><span class="k">Researching</span><span>how <a href="essays/500ms-sound.html">500ms of sound</a> creates narrative</span></li>
+      <li data-icon="❀"><span class="k">Reading</span><span id="reading-rotation">The Creative Act · Rick Rubin</span></li>
+      <li data-icon="♪"><span class="k">Listening</span><span id="today-spin">La Source · Hasselmans</span></li>
+    </ul>
+  </section>
 
-    <!-- METRICS -->
-    <div class="metrics-row">
-      <div class="card">
-        <div class="lbl">Taught</div>
-        <div class="val"><em>300</em>+</div>
-        <div class="delta">students across all my AI workshops</div>
-      </div>
-      <div class="card">
-        <div class="lbl">Shipping to</div>
-        <div class="val"><em>9,000</em>+</div>
-        <div class="delta">Princeton inboxes</div>
-      </div>
-      <div class="card">
-        <div class="lbl">Reengaged</div>
-        <div class="val"><em>85</em>%</div>
-        <div class="delta">of inactive K-12 districts</div>
-      </div>
-      <div class="card">
-        <div class="lbl">Summer '26</div>
-        <div class="val"><em>4</em></div>
-        <div class="delta">projects on Disney+ Search</div>
-      </div>
+  <!-- PROJECTS -->
+  <h2 class="sect" id="projects">Selected work</h2>
+
+  <a class="work" href="case-studies/disney.html">
+    <div class="thumb"><img src="assets/disney-plus-search.png" alt="" loading="lazy" decoding="async" /></div>
+    <div>
+      <p class="meta">PM Intern, Disney+ Search, Summer '26</p>
+      <p><b>Users couldn't find what they loved. The team couldn't see why.</b> Four projects in ten weeks.<span class="arr">→</span></p>
     </div>
-
-    <!-- CURRENTLY -->
-    <div class="card now-card" id="currently">
-      <div class="head">
-        <span class="ttl">Currently</span>
-      </div>
-      <div class="now-row" data-icon="✦">
-        <span class="k">Building</span>
-        <span class="v">HoagieCalendar (beta)</span>
-      </div>
-      <div class="now-row researching" data-icon="※">
-        <span class="k">Researching</span>
-        <span class="v">how <a href="essays/500ms-sound.html">500ms of sound</a> creates narrative</span>
-      </div>
-      <div class="now-row" data-icon="❀">
-        <span class="k">Reading</span>
-        <span class="v" id="reading-rotation">The Creative Act · Rick Rubin</span>
-      </div>
-      <div class="now-row" data-icon="♪">
-        <span class="k">Listening</span>
-        <span class="v" id="today-spin">La Source · Hasselmans</span>
-      </div>
+  </a>
+  <a class="work" href="case-studies/hoagie.html">
+    <div class="thumb"><img src="assets/hoagie-apps-showcase-homepage.png" alt="" loading="lazy" decoding="async" /></div>
+    <div>
+      <p class="meta">Head of Product, Hoagie, Sep '25 to Now</p>
+      <p><b>From one product to six.</b> HoagieMail worked fine, it just wasn't good, which is a different problem.<span class="arr">→</span></p>
     </div>
-
-    <!-- PROJECTS -->
-    <h2 class="sect" id="projects">Selected work</h2>
-
-    <div class="projects">
-
-      <article class="project" data-proj="disney" data-href="case-studies/disney.html">
-        <div class="preview">
-          <img class="proj-image" loading="lazy" src="assets/disney-plus-search.png" alt="Disney+ Search interface" />
-        </div>
-        <div class="body">
-          <div class="top">
-            <span class="idx">i.</span>
-            <span class="role">PM Intern · Disney+ Search · Summer '26</span>
-          </div>
-          <h3>Users couldn't find what they loved. The team couldn't see why.</h3>
-          <p class="blurb">Four projects in ten weeks. I built the ranking model its first feature-importance analysis, which turned up that adding every candidate feature at once did worse than adding the best single one. I also tested an expensive search-memory idea for almost nothing, and built Dory and Nemo, two AI assistants that two teams still use.</p>
-          <div class="metrics">
-            <div class="metric"><span class="n">1st</span><span class="l">explainability</span></div>
-            <div class="metric"><span class="n">~30m → <em>secs</em></span><span class="l">cited answers</span></div>
-            <div class="metric"><span class="n">2</span><span class="l">teams adopted</span></div>
-          </div>
-          <a class="read-link" href="case-studies/disney.html" aria-label="Read the Disney+ case study">→</a>
-        </div>
-      </article>
-
-      <article class="project" data-proj="hoagie" data-href="case-studies/hoagie.html">
-        <div class="preview">
-          <img class="proj-image" loading="lazy" src="assets/hoagie-apps-showcase-homepage.png" alt="Hoagie apps showcase homepage" />
-        </div>
-        <div class="body">
-          <div class="top">
-            <span class="idx">ii.</span>
-            <span class="role">Head of Product · Hoagie · Sep '25 → Now</span>
-          </div>
-          <h3>From one product to six.</h3>
-          <p class="blurb">HoagieMail worked fine, it just wasn't good, which is a different problem. 40+ interviews turned up the same thing: stuff was getting buried and people had stopped trusting their inbox. The real problem was event discovery. HoagieCalendar is in beta now, and I work across all six Hoagie apps.</p>
-          <div class="metrics">
-            <div class="metric"><span class="n">9,000<em>+</em></span><span class="l">users</span></div>
-            <div class="metric"><span class="n">40<em>+</em></span><span class="l">interviews</span></div>
-            <div class="metric"><span class="n">5</span><span class="l">products</span></div>
-          </div>
-          <a class="read-link" href="case-studies/hoagie.html" aria-label="Read the Hoagie case study">→</a>
-        </div>
-      </article>
-
-      <article class="project" data-proj="cariina" data-href="case-studies/cariina.html">
-        <div class="preview">
-          <img class="proj-image" loading="lazy" src="assets/cariina-districts.png" alt="Seventeen of twenty districts reengaged" />
-        </div>
-        <div class="body">
-          <div class="top">
-            <span class="idx">iii.</span>
-            <span class="role">Product Success Intern · Cariina · Summer '25</span>
-          </div>
-          <h3>Dashboards for districts that had stopped logging in.</h3>
-          <p class="blurb">20 K-12 districts had ghosted and the CEO wanted more features. I ran 15 admin interviews, talked him into treating it as a visibility problem instead, and built dashboards that showed them what their own data already said.</p>
-          <div class="metrics">
-            <div class="metric"><span class="n"><em>85%</em></span><span class="l">reengagement</span></div>
-            <div class="metric"><span class="n">15<em>+</em></span><span class="l">dashboards</span></div>
-            <div class="metric"><span class="n">30m → <em>3s</em></span><span class="l">processing</span></div>
-          </div>
-          <a class="read-link" href="case-studies/cariina.html" aria-label="Read the Cariina case study">→</a>
-        </div>
-      </article>
-
-      <article class="project" data-proj="ai-fluency-lab" data-href="case-studies/ai-fluency-lab.html">
-        <div class="preview">
-          <img class="proj-image" loading="lazy" src="assets/ai-fluency-lab-group.jpg" alt="AI Exploration Lab Spring 2026 cohort" />
-        </div>
-        <div class="body">
-          <div class="top">
-            <span class="idx">iv.</span>
-            <span class="role">Founder &amp; Co-Lead · Princeton AI Lab · '25 → Now</span>
-          </div>
-          <h3>Teaching AI to students outside computer science.</h3>
-          <p class="blurb">A Spring 2026 pilot for the students who get left out of campus AI classes, humanities, social sciences, non-CS STEM, etc. Three workshops, a research project each, a postdoc mentor, and a symposium at the end.</p>
-          <div class="metrics">
-            <div class="metric"><span class="n">25<em>+</em></span><span class="l">students</span></div>
-            <div class="metric"><span class="n">3</span><span class="l">workshops</span></div>
-            <div class="metric"><span class="n">Spring <em>'26</em></span><span class="l">pilot cohort</span></div>
-          </div>
-          <a class="read-link" href="case-studies/ai-fluency-lab.html" aria-label="Read the AI Exploration Lab case study">→</a>
-        </div>
-      </article>
-
+  </a>
+  <a class="work" href="case-studies/cariina.html">
+    <div class="thumb"><img src="assets/cariina-districts.png" alt="" loading="lazy" decoding="async" /></div>
+    <div>
+      <p class="meta">Product Success Intern, Cariina, Summer '25</p>
+      <p><b>Dashboards for districts that had stopped logging in.</b> 20 K-12 districts had ghosted and the CEO wanted more features.<span class="arr">→</span></p>
     </div>
-
-    <!-- SIDE QUESTS -->
-    <h2 class="sect" id="side-quests">Side quests</h2>
-
-    <div class="projects-compact side-quests">
-      <article class="project-compact side-quest" data-href="https://github.com/lauechlo/unwrapped">
-        <span class="idx">v.</span>
-        <h3>Unwrapped.</h3>
-        <p class="blurb-mini">Spotify Wrapped tells you what you played. This tries to tell you why.</p>
-        <a class="repo-link" href="https://github.com/lauechlo/unwrapped" target="_blank" rel="noopener" aria-label="Unwrapped repo on GitHub">
-          <img class="repo-icon" src="assets/logos/github-logo.png" alt="" />
-        </a>
-      </article>
-      <article class="project-compact side-quest" data-href="https://github.com/lauechlo/claude-mcp-workshop">
-        <span class="idx">vi.</span>
-        <h3>Spotify MCP.</h3>
-        <p class="blurb-mini">12 tools connecting Claude to Spotify. I built it for a workshop and kept using it.</p>
-        <a class="repo-link" href="https://github.com/lauechlo/claude-mcp-workshop" target="_blank" rel="noopener" aria-label="Spotify MCP repo on GitHub">
-          <img class="repo-icon" src="assets/logos/github-logo.png" alt="" />
-        </a>
-      </article>
-      <article class="project-compact side-quest" data-href="https://github.com/lauechlo/Music-Emotion-Recognition-and-Playlist-Sequencing">
-        <span class="idx">vii.</span>
-        <h3>Music sequencing.</h3>
-        <p class="blurb-mini">I built a coherence metric for playlist order, then beat random shuffling by 39% across 114K tracks.</p>
-        <a class="repo-link" href="https://github.com/lauechlo/Music-Emotion-Recognition-and-Playlist-Sequencing" target="_blank" rel="noopener" aria-label="Music sequencing repo on GitHub">
-          <img class="repo-icon" src="assets/logos/github-logo.png" alt="" />
-        </a>
-      </article>
+  </a>
+  <a class="work" href="case-studies/ai-fluency-lab.html">
+    <div class="thumb"><img src="assets/ai-fluency-lab-group.jpg" alt="" loading="lazy" decoding="async" /></div>
+    <div>
+      <p class="meta">Founder &amp; Co-Lead, Princeton AI Lab, '25 to Now</p>
+      <p><b>Teaching AI to students outside computer science.</b> A Spring 2026 pilot for the students who get left out of campus AI classes, humanities, social sciences, non-CS STEM, etc.<span class="arr">→</span></p>
     </div>
+  </a>
 
-    <!-- WRITING -->
-    <h2 class="sect" id="writing">From the notebook</h2>
+  <!-- SIDE QUESTS -->
+  <h2 class="sect">Side quests</h2>
+  <ul class="list">
+    <li><span class="d">2025</span><a href="https://github.com/lauechlo/unwrapped" target="_blank" rel="noopener"><b>Unwrapped.</b> Spotify Wrapped tells you what you played. This tries to tell you why.<span class="arr">→</span></a></li>
+    <li><span class="d">2025</span><a href="https://github.com/lauechlo/claude-mcp-workshop" target="_blank" rel="noopener"><b>Spotify MCP.</b> 12 tools connecting Claude to Spotify. I built it for a workshop and kept using it.<span class="arr">→</span></a></li>
+    <li><span class="d">2026</span><a href="https://github.com/lauechlo/Music-Emotion-Recognition-and-Playlist-Sequencing" target="_blank" rel="noopener"><b>Music sequencing.</b> I built a coherence metric for playlist order, then beat random shuffling by 39% across 114K tracks.<span class="arr">→</span></a></li>
+  </ul>
 
-    <div class="writing">
-      <a class="post" href="essays/500ms-sound.html">
-        <div class="post-head">
-          <span class="post-num"></span>
-          <span class="post-date">Dec 2025</span>
-        </div>
-        <h3>Why 500 milliseconds<span class="post-note-cue" aria-hidden="true">♪</span> of sound creates entire narratives.</h3>
-        <p>Half a second of the right sound and people build a whole scene out of it, which we found at Princeton's Music Cognition Lab. What that changed about how I think about micro-interactions.</p>
-      </a>
-      <a class="post" href="essays/working-with-ai.html">
-        <div class="post-head">
-          <span class="post-num"></span>
-          <span class="post-date">May 2026</span>
-        </div>
-        <h3>Working with AI like it's a product sprint.</h3>
-        <p>Most people just open a chat window and hope. I started treating it like a sprint instead, which mostly means deciding what a good output looks like before you ask for it, then actually checking whether you got it.</p>
-      </a>
-      <a class="post" href="essays/major-as-method.html">
-        <div class="post-head">
-          <span class="post-num"></span>
-          <span class="post-date">Sep 2025</span>
-        </div>
-        <h3>Hong Kong, a harp, and how I ended up in product.</h3>
-        <p>People ask how a psychology major ended up running product. The answer starts four years before I declared the major.</p>
-      </a>
+  <!-- WRITING -->
+  <h2 class="sect" id="writing">From the notebook</h2>
+  <ul class="list">
+    <li><span class="d">Dec 2025</span><a class="title" href="essays/500ms-sound.html">Why 500 milliseconds of sound creates entire narratives.</a></li>
+    <li><span class="d">May 2026</span><a class="title" href="essays/working-with-ai.html">Working with AI like it's a product sprint.</a></li>
+    <li><span class="d">Sep 2025</span><a class="title" href="essays/major-as-method.html">Hong Kong, a harp, and how I ended up in product.</a></li>
+  </ul>
+
+  <!-- ABOUT -->
+  <h2 class="sect" id="about">A few things about me</h2>
+  <p>I grew up between classical music and code. The plan was a psychology degree, and product is just what it turned into.</p>
+  <p>Outside of work I play the harp, sing jazz a cappella, hike whenever I can find a trail, and drink an unreasonable amount of cheese foam boba.</p>
+  <div class="photos">
+    <img src="assets/harp-orchestra.jpg" alt="Playing harp with the orchestra" loading="lazy" decoding="async" />
+    <img src="assets/rainier-hike.jpg" alt="Hiking near Mount Rainier" loading="lazy" decoding="async" />
+  </div>
+  <p class="cap">Harp with the orchestra. Rainier.</p>
+  <p>I'm <b><a href="http://www.theprincetonkatzenjammers.com/" target="_blank" rel="noopener">President of the Princeton Katzenjammers</a></b>, the oldest co-ed a cappella group in the Ivy League. This is what we sound like, recorded for our 50th anniversary.</p>
+  <iframe class="katz" data-testid="embed-iframe"
+    style="border-radius:12px"
+    src="https://open.spotify.com/embed/album/6jVoaWRSSQoekSZsTVQ8RS?utm_source=generator"
+    width="100%" height="152" frameBorder="0" allowfullscreen=""
+    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+    loading="lazy"
+    title="Princeton Katzenjammers · 50th anniversary album"></iframe>
+
+  <!-- RESUME -->
+  <h2 class="sect" id="resume">Résumé at a glance <a class="cta" href="https://docs.google.com/document/d/1mCoQ4bUgjqYYhguAibcJrps6crtFf7iN9demG4JG56c/preview" target="_blank" rel="noopener">Full résumé ↗</a></h2>
+  <div class="resume">
+    <div class="res-col">
+      <p class="lbl">Education</p>
+      <ul>
+        <li><img src="assets/logos/princeton-logo.png" alt="" /><span><span class="who">Psychology &amp; CS</span><span class="what">Princeton · '23 to '27</span></span></li>
+        <li><img src="assets/logos/csml-logo.jpg" alt="" /><span><span class="who"><a href="https://ua.princeton.edu/fields-study/minors/statistics-and-machine-learning" target="_blank" rel="noopener">Stats &amp; Machine Learning</a></span><span class="what">Minors · ORFE</span></span></li>
+        <li><img src="assets/logos/music-cognition-logo.png" alt="" /><span><span class="who"><a href="https://www.elizabethmargulis.com/about-music-cognition-lab" target="_blank" rel="noopener">Music Cognition Lab</a></span><span class="what">Co-author and research assistant</span></span></li>
+      </ul>
     </div>
-
-    <!-- ABOUT with photo collage -->
-    <h2 class="sect" id="about">A few things about me</h2>
-
-    <div class="about-wrap">
-      <div class="about-prose">
-        <p class="lead">I grew up between classical music and code. The plan was a psychology degree, and product is just what it turned into.</p>
-        <p>Psychology taught me to ask questions without leading the answer, and the music cognition lab got me comfortable sitting with 300 free-text responses until one signal shows up. Hoagie is where I figured out that the gap between “I don't know how to build this” and “I built this” is mostly just starting.</p>
-        <p>Ten weeks on Disney+ Search in Seattle was the same thing at a much bigger scale, including a spec of mine that died at intake in week three. Mostly I got better at deciding while I was still scared of being wrong.</p>
-        <p>Outside of work I play the harp, sing jazz a cappella, hike whenever I can find a trail, and drink an unreasonable amount of cheese foam boba.</p>
-        <p>What I actually want next is to be the one catching up, around people who are better than me at the things I care about. Somewhere growing fast enough that I get handed things before I am ready for them.</p>
-      </div>
-
-
-      <div class="collage">
-        <div class="photo p1">
-          <img loading="lazy" decoding="async" src="assets/harp-orchestra.jpg" alt="Chloe performing harp with orchestra" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:55% 50%" />
-        </div>
-        <div class="photo p2">
-          <img loading="lazy" decoding="async" src="assets/disney.jpg" alt="Chloe in a Disney Internships shirt at Pixar Pier" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:65% 40%" />
-        </div>
-        <div class="photo p3">
-          <img loading="lazy" decoding="async" src="assets/rainier-hike.jpg" alt="Chloe hiking at Mount Rainier" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:30% 50%" />
-        </div>
-        <div class="photo p4">
-          <img loading="lazy" decoding="async" src="assets/seattle-skyline.jpg" alt="Chloe at Kerry Park with the Seattle skyline behind her" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 30%" />
-        </div>
-      </div>
+    <div class="res-col">
+      <p class="lbl">Work</p>
+      <ul>
+        <li><img src="assets/logos/disney-plus-logo.svg" alt="" /><span><span class="who"><a href="https://www.disneyplus.com/browse/search" target="_blank" rel="noopener">Disney+ Search</a></span><span class="what">PM Intern · Seattle · Sum '26</span></span></li>
+        <li><img src="assets/logos/anthropic-logo.png" alt="" /><span><span class="who"><a href="https://www.anthropic.com/news/introducing-claude-for-education" target="_blank" rel="noopener">Anthropic</a></span><span class="what">Claude Builder Ambassador · Fall '25 to Spring '26</span></span></li>
+        <li><img src="assets/logos/cariina-logo.jpg" alt="" /><span><span class="who"><a href="https://www.cariina.com/" target="_blank" rel="noopener">Cariina</a></span><span class="what">Product Success · Boston · Sum '25</span></span></li>
+      </ul>
     </div>
-
-    <div class="about-katz">
-      <p class="katz-lead">I'm <b><a href="http://www.theprincetonkatzenjammers.com/" target="_blank" rel="noopener">President of the Princeton Katzenjammers</a></b>, the oldest co-ed a cappella group in the Ivy League. This is what we sound like, recorded for our 50th anniversary.</p>
-      <iframe class="katz-iframe" data-testid="embed-iframe"
-        style="border-radius:12px"
-        src="https://open.spotify.com/embed/album/6jVoaWRSSQoekSZsTVQ8RS?utm_source=generator"
-        width="100%" height="152" frameBorder="0" allowfullscreen=""
-        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-        loading="lazy"
-        title="Princeton Katzenjammers · 50th anniversary album"></iframe>
+    <div class="res-col">
+      <p class="lbl">Leadership</p>
+      <ul>
+        <li><img src="assets/logos/princeton-ai-lab-logo.png" alt="" /><span><span class="who"><a href="https://ai.princeton.edu/ai-lab/introduction-princeton-laboratory-artificial-intelligence" target="_blank" rel="noopener">AI Exploration Lab</a></span><span class="what">Founder · '25 to Now · 25+ students</span></span></li>
+        <li><img src="assets/logos/hoagie-club-logo.png" alt="" /><span><span class="who"><a href="https://hoagie.io/" target="_blank" rel="noopener">Hoagie</a></span><span class="what">Head of Product · '25 to Now</span></span></li>
+        <li><img src="assets/logos/nytt-logo.png" alt="" /><span><span class="who"><a href="https://www.princetoneclub.com/nytt" target="_blank" rel="noopener">NY Tiger Trek</a></span><span class="what">President · $20K raised · 20 students</span></span></li>
+      </ul>
     </div>
+  </div>
 
-    <div class="fav-strip">
-      <div class="fav-card" id="comfort-watch-card">
-        <div class="fav-thumb"><img loading="lazy" src="assets/pride-prejudice.jpg" alt="Pride &amp; Prejudice" /></div>
-        <div>
-          <div class="fav-lbl">Comfort watch</div>
-          <div class="fav-ttl">Pride &amp; Prejudice <em>(2005)</em></div>
-          <div class="fav-note">“you have bewitched me, body &amp; soul.” Also how I feel about good product design.</div>
-        </div>
-      </div>
-      <div class="fav-card" id="comfort-song-card">
-        <div class="fav-thumb"><img loading="lazy" src="assets/tangled-lantern-scene.jpg" alt="Tangled lantern scene" /></div>
-        <div>
-          <div class="fav-lbl">Comfort song</div>
-          <div class="fav-ttl">I See The Light <em>(2010)</em></div>
-          <div class="fav-note">“and at last I see the light.” The feeling of finally understanding something.</div>
-        </div>
-      </div>
-    </div>
+  <!-- CONTACT -->
+  <h2 class="sect" id="contact">Let's build something.</h2>
+  <p>Email is best. Reach me at <a href="mailto:chloelau@princeton.edu">chloelau@princeton.edu</a>.</p>
+  <div class="channels">
+    <a class="channel" href="mailto:chloelau@princeton.edu" aria-label="Email"><img src="assets/logos/gmail-logo.png" alt="" /><span class="channel-lbl">Email</span></a>
+    <a class="channel" href="https://www.linkedin.com/in/chloe-hc-lau/" target="_blank" rel="noopener" aria-label="LinkedIn profile"><img src="assets/logos/linkedin-logo.png" alt="" /><span class="channel-lbl">LinkedIn</span></a>
+    <a class="channel" href="https://github.com/lauechlo" target="_blank" rel="noopener" aria-label="GitHub profile"><img src="assets/logos/github-logo.png" alt="" /><span class="channel-lbl">GitHub</span></a>
+    <a class="channel" href="https://open.spotify.com/playlist/5SgFjqumIdVnYSQV9cXcM6" target="_blank" rel="noopener" aria-label="Spotify playlist"><img src="assets/logos/spotify-logo.png" alt="" /><span class="channel-lbl">Spotify</span></a>
+    <a class="channel" href="https://www.youtube.com/@princetonkatzenjammers4504" target="_blank" rel="noopener" aria-label="Princeton Katzenjammers on YouTube"><img src="assets/logos/youtube-logo.png" alt="" /><span class="channel-lbl">YouTube</span></a>
+  </div>
 
-    <!-- RESUME -->
-    <h2 class="sect" id="resume">Résumé at a glance
-      <a class="sect-cta" href="https://docs.google.com/document/d/1mCoQ4bUgjqYYhguAibcJrps6crtFf7iN9demG4JG56c/preview" target="_blank" rel="noopener">Full résumé ↗</a>
-    </h2>
-
-    <div class="resume">
-      <div class="res-card">
-        <div class="lbl">Education</div>
-        <ul>
-          <li>
-            <span class="res-chip"><img src="assets/logos/princeton-logo.png" alt="" /></span>
-            <span class="res-entry">
-              <span class="who">Psychology &amp; CS</span>
-              <span class="what">Princeton · '23 → '27</span>
-            </span>
-          </li>
-          <li>
-            <span class="res-chip"><img src="assets/logos/csml-logo.jpg" alt="" /></span>
-            <span class="res-entry">
-              <span class="who"><a href="https://ua.princeton.edu/fields-study/minors/statistics-and-machine-learning" target="_blank" rel="noopener">Stats &amp; Machine Learning</a></span>
-              <span class="what">Minors · ORFE</span>
-            </span>
-          </li>
-          <li>
-            <span class="res-chip"><img src="assets/logos/music-cognition-logo.png" alt="" /></span>
-            <span class="res-entry">
-              <span class="who"><a href="https://www.elizabethmargulis.com/about-music-cognition-lab" target="_blank" rel="noopener">Music Cognition Lab</a></span>
-              <span class="what">Co-author and research assistant</span>
-            </span>
-          </li>
-        </ul>
-      </div>
-      <div class="res-card">
-        <div class="lbl">Work</div>
-        <ul>
-          <li>
-            <span class="res-chip"><img src="assets/logos/disney-plus-logo.svg" alt="" /></span>
-            <span class="res-entry">
-              <span class="who"><a href="https://www.disneyplus.com/browse/search" target="_blank" rel="noopener">Disney+ Search</a></span>
-              <span class="what">PM Intern · Seattle · Sum '26</span>
-            </span>
-          </li>
-          <li>
-            <span class="res-chip"><img src="assets/logos/anthropic-logo.png" alt="" /></span>
-            <span class="res-entry">
-              <span class="who"><a href="https://www.anthropic.com/news/introducing-claude-for-education" target="_blank" rel="noopener">Anthropic</a></span>
-              <span class="what">Claude Builder Ambassador · Fall '25 → Spring '26</span>
-            </span>
-          </li>
-          <li>
-            <span class="res-chip"><img src="assets/logos/cariina-logo.jpg" alt="" /></span>
-            <span class="res-entry">
-              <span class="who"><a href="https://www.cariina.com/" target="_blank" rel="noopener">Cariina</a></span>
-              <span class="what">Product Success · Boston · Sum '25</span>
-            </span>
-          </li>
-        </ul>
-      </div>
-      <div class="res-card">
-        <div class="lbl">Leadership</div>
-        <ul>
-          <li>
-            <span class="res-chip"><img src="assets/logos/princeton-ai-lab-logo.png" alt="" /></span>
-            <span class="res-entry">
-              <span class="who"><a href="https://ai.princeton.edu/ai-lab/introduction-princeton-laboratory-artificial-intelligence" target="_blank" rel="noopener">AI Exploration Lab</a></span>
-              <span class="what">Founder · '25 → Now · 25+ students</span>
-            </span>
-          </li>
-          <li>
-            <span class="res-chip"><img src="assets/logos/hoagie-club-logo.png" alt="" /></span>
-            <span class="res-entry">
-              <span class="who"><a href="https://hoagie.io/" target="_blank" rel="noopener">Hoagie</a></span>
-              <span class="what">Head of Product · '25 → Now</span>
-            </span>
-          </li>
-          <li>
-            <span class="res-chip"><img src="assets/logos/nytt-logo.png" alt="" /></span>
-            <span class="res-entry">
-              <span class="who"><a href="https://www.princetoneclub.com/nytt" target="_blank" rel="noopener">NY Tiger Trek</a></span>
-              <span class="what">President · $20K raised · 20 students</span>
-            </span>
-          </li>
-        </ul>
-      </div>
-    </div>
-
-    <!-- CONTACT -->
-    <div class="contact" id="contact">
-      <h2>Let's build something.</h2>
-      <p class="lead">Email is best. Reach me at <a href="mailto:chloelau@princeton.edu">chloelau@princeton.edu</a>.</p>
-      <div class="channels">
-        <a class="channel" href="mailto:chloelau@princeton.edu" aria-label="Email">
-          <span class="channel-icon"><img src="assets/logos/gmail-logo.png" alt="" /></span>
-          <span class="channel-lbl">Email</span>
-        </a>
-        <a class="channel" href="https://www.linkedin.com/in/chloe-hc-lau/" target="_blank" rel="noopener" aria-label="LinkedIn profile">
-          <span class="channel-icon"><img src="assets/logos/linkedin-logo.png" alt="" /></span>
-          <span class="channel-lbl">LinkedIn</span>
-        </a>
-        <a class="channel" href="https://github.com/lauechlo" target="_blank" rel="noopener" aria-label="GitHub profile">
-          <span class="channel-icon"><img src="assets/logos/github-logo.png" alt="" /></span>
-          <span class="channel-lbl">GitHub</span>
-        </a>
-        <a class="channel" href="https://open.spotify.com/playlist/5SgFjqumIdVnYSQV9cXcM6" target="_blank" rel="noopener" aria-label="Spotify playlist">
-          <span class="channel-icon"><img src="assets/logos/spotify-logo.png" alt="" /></span>
-          <span class="channel-lbl">Spotify</span>
-        </a>
-        <a class="channel" href="https://www.youtube.com/@princetonkatzenjammers4504" target="_blank" rel="noopener" aria-label="Princeton Katzenjammers on YouTube">
-          <span class="channel-icon"><img src="assets/logos/youtube-logo.png" alt="" /></span>
-          <span class="channel-lbl">YouTube</span>
-        </a>
-      </div>
-    </div>
-
-    <div class="colophon">
-      <span>© Chloe Lau</span>
-      <span>Built with charm and Claude</span>
-      <button class="colophon-tweaks" id="open-tweaks" type="button" title="Toggle magic mode">click for magic ✨</button>
-    </div>
-
+  <div class="foot">
+    <span>© Chloe Lau</span>
+    <button id="open-tweaks" type="button" title="Toggle magic mode">click for magic ✨</button>
+  </div>
 </main>
 
 <div class="toast" id="toast"></div>
