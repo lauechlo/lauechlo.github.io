@@ -94,7 +94,7 @@
   .list li{display:grid;grid-template-columns:82px 1fr;gap:12px;padding:7px 0;border-top:1px solid var(--line)}
   .list.no-dates li{grid-template-columns:1fr}
   .list li:last-child{border-bottom:1px solid var(--line)}
-  .list .d{padding-top:4px}
+  .list .d{padding-top:4px;white-space:nowrap}
   .list li>a{color:var(--ink);text-decoration:none}
   .list li>a b{font-weight:500}
   .list li>a.title{color:var(--forest);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px}
@@ -140,12 +140,16 @@
   @media (max-width:767px){
     main{padding:24px 20px 56px}
     .top{margin-bottom:26px}
-    .top nav a{margin-left:12px}
+    .top{flex-wrap:nowrap}
+    .top .brand{white-space:nowrap;font-size:14px}
+    .top nav{white-space:nowrap}
+    .top nav a{margin-left:6px;font-size:12px}
+    .top nav a[href^="mailto"]{display:none}
     .intro{grid-template-columns:1fr;gap:16px}
     .headshot{width:120px;order:-1}
     .lede{font-size:20px}
     a.work{grid-template-columns:72px 1fr;gap:12px}
-    .list li{grid-template-columns:64px 1fr}
+    .list li{grid-template-columns:70px 1fr}
     .about-grid{grid-template-columns:1fr;gap:16px}
     .slides{height:260px}
     a.work .meta{display:block}
@@ -237,7 +241,7 @@
 <main id="top">
   <div class="top">
     <a class="brand" href="#top">Chloe Lau</a>
-    <nav><a href="#projects">Case studies</a><a href="#quests">Side quests</a><a href="#writing">Blogs</a><a href="https://docs.google.com/document/d/1mCoQ4bUgjqYYhguAibcJrps6crtFf7iN9demG4JG56c/preview" target="_blank" rel="noopener">Résumé ↗</a><a href="mailto:chloelau@princeton.edu">Email</a></nav>
+    <nav><a href="#projects">Case studies</a><a href="#quests">Side projects</a><a href="#writing">Blogs</a><a href="https://docs.google.com/document/d/1mCoQ4bUgjqYYhguAibcJrps6crtFf7iN9demG4JG56c/preview" target="_blank" rel="noopener">Résumé ↗</a><a href="mailto:chloelau@princeton.edu">Email</a></nav>
   </div>
 
   <!-- INTRO -->
@@ -293,7 +297,7 @@
   </a>
 
   <!-- SIDE QUESTS -->
-  <h2 class="sect" id="quests">Side quests</h2>
+  <h2 class="sect" id="quests">Side projects</h2>
   <ul class="list no-dates">
     <li><a href="https://github.com/lauechlo/unwrapped" target="_blank" rel="noopener"><b>Unwrapped:</b> pulls your Spotify history apart to figure out why you played what you played.<img class="gh" src="assets/logos/github-logo.png" alt="GitHub" /></a></li>
     <li><a href="https://github.com/lauechlo/claude-mcp-workshop" target="_blank" rel="noopener"><b>Spotify MCP:</b> 12 tools connecting Claude to Spotify. I built it for a workshop and kept using it.<img class="gh" src="assets/logos/github-logo.png" alt="GitHub" /></a></li>
