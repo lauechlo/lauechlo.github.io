@@ -117,16 +117,6 @@
   .slides img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .9s ease}
   .slides img.on{opacity:1}
 
-  /* Résumé */
-  .resume{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
-  .res-col .lbl{margin:0 0 4px}
-  .res-col ul{list-style:none;margin:0;padding:0}
-  .res-col li{display:grid;grid-template-columns:24px 1fr;gap:10px;padding:7px 0;border-top:1px solid var(--line);align-items:center;min-height:64px;box-sizing:border-box}
-  .res-col li:last-child{border-bottom:1px solid var(--line)}
-  .res-col img{width:24px;height:24px;object-fit:contain}
-  .res-col .who{display:block;font-size:15px;line-height:1.3;white-space:nowrap}
-  .res-col .who a{color:var(--ink)}
-  .res-col .what{display:block;white-space:nowrap}
 
   /* Contact */
   .channels{display:flex;flex-wrap:wrap;gap:22px;margin:14px 0 0}
@@ -157,8 +147,6 @@
     a.work .meta{display:block}
     a.work .md{display:block;margin-top:1px}
     .now li{grid-template-columns:84px 1fr}
-    .resume{grid-template-columns:1fr;gap:18px}
-    .res-col .who,.res-col .what{white-space:normal}
     .channels{gap:16px}
   }
   @media (hover:none){ .arr{transition:none} }
@@ -168,7 +156,6 @@
     *{-webkit-print-color-adjust:exact !important;print-color-adjust:exact !important}
     .top nav{display:none}
     a.work .arr, .list .gh, h2.sect .cta{display:none}
-    .resume{grid-template-columns:repeat(3,1fr)}
     .intro{grid-template-columns:1fr 150px}
   }
 
@@ -275,32 +262,7 @@
 
   <!-- RESUME -->
   <h2 class="sect" id="resume">Résumé at a glance <a class="cta" href="https://docs.google.com/document/d/1mCoQ4bUgjqYYhguAibcJrps6crtFf7iN9demG4JG56c/preview" target="_blank" rel="noopener">Full version ↗</a></h2>
-  <div class="resume">
-    <div class="res-col">
-      <p class="lbl">Education</p>
-      <ul>
-        <li><img src="assets/logos/princeton-logo.png" alt="" /><span><span class="who">Psychology &amp; CS</span><span class="what">Princeton</span></span></li>
-        <li><img src="assets/logos/csml-logo.jpg" alt="" /><span><span class="who"><a href="https://ua.princeton.edu/fields-study/minors/statistics-and-machine-learning" target="_blank" rel="noopener">SML</a> &amp; <a href="https://orfe.princeton.edu/undergraduate/oqds" target="_blank" rel="noopener">OQDS</a></span><span class="what">Minors</span></span></li>
-        <li><img src="assets/logos/music-cognition-logo.png" alt="" /><span><span class="who"><a href="https://www.elizabethmargulis.com/about-music-cognition-lab" target="_blank" rel="noopener">Music Cognition Lab</a></span><span class="what">Co-author</span></span></li>
-      </ul>
-    </div>
-    <div class="res-col">
-      <p class="lbl">Work</p>
-      <ul>
-        <li><img src="assets/logos/disney-plus-logo.svg" alt="" /><span><span class="who"><a href="https://www.disneyplus.com/browse/search" target="_blank" rel="noopener">Disney+ Search</a></span><span class="what">PM intern</span></span></li>
-        <li><img src="assets/logos/anthropic-logo.png" alt="" /><span><span class="who"><a href="https://www.anthropic.com/news/introducing-claude-for-education" target="_blank" rel="noopener">Anthropic</a></span><span class="what">Claude Builder Ambassador</span></span></li>
-        <li><img src="assets/logos/cariina-logo.jpg" alt="" /><span><span class="who"><a href="https://www.cariina.com/" target="_blank" rel="noopener">Cariina</a></span><span class="what">Product success</span></span></li>
-      </ul>
-    </div>
-    <div class="res-col">
-      <p class="lbl">Leadership</p>
-      <ul>
-        <li><img src="assets/logos/princeton-ai-lab-logo.png" alt="" /><span><span class="who"><a href="https://ai.princeton.edu/ai-lab/introduction-princeton-laboratory-artificial-intelligence" target="_blank" rel="noopener">AI Exploration Lab</a></span><span class="what">Founder</span></span></li>
-        <li><img src="assets/logos/hoagie-club-logo.png" alt="" /><span><span class="who"><a href="https://hoagie.io/" target="_blank" rel="noopener">Hoagie</a></span><span class="what">Head of product</span></span></li>
-        <li><img src="assets/logos/nytt-logo.png" alt="" /><span><span class="who"><a href="https://www.princetoneclub.com/nytt" target="_blank" rel="noopener">NY Tiger Trek</a></span><span class="what">President</span></span></li>
-      </ul>
-    </div>
-  </div>
+  <p>I study Psychology and CS at Princeton, class of 2027, with minors in <a href="https://ua.princeton.edu/fields-study/minors/statistics-and-machine-learning" target="_blank" rel="noopener">SML</a> and <a href="https://orfe.princeton.edu/undergraduate/oqds" target="_blank" rel="noopener">OQDS</a>, and I co-authored a manuscript at the <a href="https://www.elizabethmargulis.com/about-music-cognition-lab" target="_blank" rel="noopener">Music Cognition Lab</a> that is now under review. This past summer I was a PM intern on <a href="https://www.disneyplus.com/browse/search" target="_blank" rel="noopener">Disney+ Search</a>, and the summer before that I was a product success intern at <a href="https://www.cariina.com/" target="_blank" rel="noopener">Cariina</a>. During the school year I am head of product at <a href="https://hoagie.io/" target="_blank" rel="noopener">Hoagie</a> and founder of the <a href="https://ai.princeton.edu/ai-lab/introduction-princeton-laboratory-artificial-intelligence" target="_blank" rel="noopener">AI Exploration Lab</a>, which I pitched to the Princeton AI Lab in November 2025. I was a Claude Builder Ambassador for <a href="https://www.anthropic.com/news/introducing-claude-for-education" target="_blank" rel="noopener">Anthropic</a>, and I am president of <a href="https://www.princetoneclub.com/nytt" target="_blank" rel="noopener">NY Tiger Trek</a>.</p>
 
   <!-- CONTACT -->
   <h2 class="sect" id="contact">Get in touch</h2>
