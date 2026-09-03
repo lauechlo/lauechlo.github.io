@@ -3,23 +3,17 @@ body{overflow-x:clip}
 /* Sub-page article styles. Tokens mirror index.html. */
 
 :root{
-  --bone:#F6F3E4;
-  --bone-2:#E6E0CB;
-  --paper:#FBF9F0;
-  --panel:#FDFCF6;
-  --ink:#1A1710;
-  --ink-2:#322F24;
-  --muted:#5D5A4B;
-  --forest:#31694A;
-  --forest-2:#2E6138;
-  --slate:#22503A;
-  --slate-2:#17351F;
-  --clay:#A84A32;
-  --clay-2:#8E3D2A;
-  --hair:rgba(26,23,13,0.10);
-  --line:rgba(26,23,13,0.07);
-  --green-dim:#FBF7E6;
-  --slate-dim:#EDE4C4;
+  --bone:#EEF1F4;
+  --bone-2:#DDE3E9;
+  --ink:#34383D;
+  --ink-2:#464B51;
+  --muted:#53585E;
+  --forest:#2C543F;
+  --forest-2:#425B4E;
+  --slate:#1F3E2E;
+  --slate-2:#172E22;
+  --hair:rgba(52,56,61,0.10);
+  --line:rgba(52,56,61,0.07);
   /* one place to change a typeface. Never hardcode a family below. */
   --font-heading:'Newsreader',Georgia,serif;
   --font-body:'Newsreader',Georgia,serif;
@@ -44,7 +38,7 @@ a{color:inherit;text-decoration:none}
 /* Top bar */
 .topbar{
   position:sticky;top:0;z-index:10;
-  background:rgba(246,243,228,0.94);
+  background:rgba(238,241,244,0.94);
   backdrop-filter:blur(8px);
   border-bottom:1px solid var(--line);
   padding:14px 32px;
@@ -269,6 +263,6 @@ article ul li::marker{color:var(--slate)}
   a{color:inherit;text-decoration:none}
 }
 
-/* Second accent, mirroring index.html. See --clay note there. */
-.my-role b{color:var(--clay)}
-.article-nav a:hover{color:var(--clay)}
+/* Second accent: the lighter pen green */
+.my-role b{color:var(--forest-2)}
+.article-nav a:hover{color:var(--forest-2)}
