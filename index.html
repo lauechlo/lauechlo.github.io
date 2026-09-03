@@ -81,9 +81,8 @@
   /* Currently */
   .now{list-style:none;margin:0;padding:0}
   .now h2.sect{margin-top:8px}
-  .now li{display:grid;grid-template-columns:20px 96px 1fr;gap:10px;padding:7px 0;border-top:1px solid var(--line);align-items:baseline}
+  .now li{display:grid;grid-template-columns:96px 1fr;gap:10px;padding:7px 0;border-top:1px solid var(--line);align-items:baseline}
   .now li:last-child{border-bottom:1px solid var(--line)}
-  .now li::before{content:attr(data-icon);color:var(--forest)}
   .now .k{padding-top:3px}
 
   /* Work rows */
@@ -157,7 +156,7 @@
     .slides{height:260px}
     a.work .meta{display:block}
     a.work .md{display:block;margin-top:1px}
-    .now li{grid-template-columns:18px 84px 1fr}
+    .now li{grid-template-columns:84px 1fr}
     .resume{grid-template-columns:1fr;gap:18px}
     .res-col .who,.res-col .what{white-space:normal}
     .channels{gap:16px}
@@ -195,10 +194,10 @@
   <section class="now" id="currently">
     <h2 class="sect">Currently</h2>
     <ul class="now">
-      <li data-icon="✦"><span class="k">Building</span><span>HoagieCalendar (beta)</span></li>
-      <li data-icon="※"><span class="k">Researching</span><span>how <a href="essays/500ms-sound.html">500ms of sound</a> creates narrative</span></li>
-      <li data-icon="❀"><span class="k">Reading</span><span id="reading-rotation">The Creative Act by Rick Rubin</span></li>
-      <li data-icon="♪"><span class="k">Listening</span><span id="today-spin">La Source by Hasselmans</span></li>
+      <li><span class="k">Building</span><span>HoagieCalendar (beta)</span></li>
+      <li><span class="k">Researching</span><span>how <a href="essays/500ms-sound.html">500ms of sound</a> creates narrative</span></li>
+      <li><span class="k">Reading</span><span>The Creative Act by Rick Rubin</span></li>
+      <li><span class="k">Listening</span><span>La Source by Hasselmans</span></li>
     </ul>
   </section>
 
@@ -320,99 +319,6 @@
 
 
 <script>
-  // ────────── READING ROTATION ──────────
-  // Rotates the Currently > Reading row deterministically by day-of-year
-  (function(){
-    const el = document.getElementById('reading-rotation');
-    if(!el) return;
-    const books = [
-      'A Little Life by Hanya Yanagihara',
-      'Tuesdays with Morrie by Mitch Albom',
-      'Roman Stories by Jhumpa Lahiri',
-      'All the Light We Cannot See by Anthony Doerr',
-      'Me Before You by Jojo Moyes',
-      'Persuasion by Jane Austen',
-      'Sense & Sensibility by Jane Austen',
-      'The Secret History by Donna Tartt',
-      'Wuthering Heights by Emily Brontë',
-      'Beloved by Toni Morrison',
-      'Let the Great World Spin by Colum McCann',
-      'The Color Purple by Alice Walker',
-      'Yellowface by R.F. Kuang',
-      'Galatea by Madeline Miller',
-      'Normal People by Sally Rooney',
-      'The Oresteia by Aeschylus',
-      'The Alexiad by Anna Komnene',
-      'Purgatorio by Dante Alighieri',
-      'Inferno by Dante Alighieri',
-      'The Metamorphosis by Franz Kafka',
-      'The Song of Achilles by Madeline Miller',
-      'Harry Potter by J.K. Rowling',
-      'Six of Crows by Leigh Bardugo',
-      'A Farewell to Arms by Ernest Hemingway',
-      'Crying in H Mart by Michelle Zauner',
-      "On Earth We're Briefly Gorgeous by Ocean Vuong",
-      'And Then There Were None by Agatha Christie',
-      'Death of a Salesman by Arthur Miller',
-      'The Fault in Our Stars by John Green',
-      'The Great Gatsby by F. Scott Fitzgerald',
-      'Atonement by Ian McEwan'
-    ];
-    function pick(i){ el.textContent = books[((i % books.length) + books.length) % books.length]; }
-    const now = new Date();
-    const start = new Date(now.getFullYear(), 0, 0);
-    const day = Math.floor((now - start) / 86400000);
-    let current = day;
-    pick(current);
-    // Click → swap to a different random title, with a fade
-    el.style.cursor = 'pointer';
-    el.style.transition = 'opacity .25s ease';
-    el.title = 'tap for another';
-    el.addEventListener('click', ()=>{
-      el.style.opacity = '0';
-      setTimeout(()=>{
-        current = (current + 1) % books.length;
-        pick(current);
-        el.style.opacity = '1';
-      }, 250);
-    });
-  })();
-
-  // ────────── TODAY'S SPIN ──────────
-  // Rotates one harp track per day-of-year; updates both the sidebar dock
-  // and the mobile in-flow dock.
-  (function(){
-    const els = document.querySelectorAll('#today-spin');
-    if(!els.length) return;
-    const tracks = [
-      'La Source by Hasselmans',
-      'Rhapsodie by Marcel Grandjany',
-      'Die Moldau by Smetana',
-      'Watching the Wheat by John Thomas',
-      'Absidioles by Bernard Andrès'
-    ];
-    const now = new Date();
-    const start = new Date(now.getFullYear(), 0, 0);
-    const day = Math.floor((now - start) / 86400000);
-    let current = day % tracks.length;
-    function pickT(i){ els.forEach(el => { el.textContent = tracks[((i % tracks.length) + tracks.length) % tracks.length]; }); }
-    pickT(current);
-    // Click → swap to a different random track, with a fade (matches Reading)
-    els.forEach(el => {
-      el.style.cursor = 'pointer';
-      el.style.transition = 'opacity .25s ease';
-      el.title = 'tap for another';
-      el.addEventListener('click', ()=>{
-        els.forEach(e => e.style.opacity = '0');
-        setTimeout(()=>{
-          current = (current + 1) % tracks.length;
-          pickT(current);
-          els.forEach(e => e.style.opacity = '1');
-        }, 250);
-      });
-    });
-  })();
-
   // ────────── 500MS HARP PLUCK ──────────
   // Hover the 500ms essay card → half a second of synthesized harp.
   // The site's only interaction that *is* the thing being written about.

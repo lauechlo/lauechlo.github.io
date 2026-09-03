@@ -52,6 +52,7 @@ const VIEWPORTS = [
             metaInBodyFace: [...document.querySelectorAll('.now .k, .list .d, a.work .meta, .channel-lbl')]
               .filter(e => getComputedStyle(e).fontFamily === getComputedStyle(document.body).fontFamily).length,
             magicLeftovers: document.querySelectorAll('#tweaks-popover, [data-magic], .foot button, .toast, #open-tweaks, .magic-particle').length,
+            rotationLeftovers: document.querySelectorAll('#reading-rotation, #today-spin, .now li[data-icon]').length,
           };
         });
         const fail = (what) => failures.push(`${vp.name} ${path}: ${what}`);
@@ -66,6 +67,7 @@ const VIEWPORTS = [
           if (m.emDash) fail(`em dash in homepage copy`);
           if (m.metaInBodyFace > 0) fail(`${m.metaInBodyFace} metadata elements still in the body face`);
           if (m.magicLeftovers > 0) fail(`${m.magicLeftovers} magic-mode elements still in the DOM`);
+          if (m.rotationLeftovers > 0) fail(`${m.rotationLeftovers} rotation ids or data-icon glyphs still in the DOM`);
         }
         if (m.tinyText > 0) fail(`${m.tinyText} text elements under 12px`);
         errors.forEach(fail);
