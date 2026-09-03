@@ -55,6 +55,8 @@ const VIEWPORTS = [
             magicLeftovers: document.querySelectorAll('#tweaks-popover, [data-magic], .foot button, .toast, #open-tweaks, .magic-particle').length,
             rotationLeftovers: document.querySelectorAll('#reading-rotation, #today-spin, .now li[data-icon]').length,
             resumeGrid: document.querySelectorAll('.resume, .res-col').length,
+            slides: document.querySelectorAll('#slides img').length,
+            slidesNoAlt: [...document.querySelectorAll('#slides img')].filter(i => !i.getAttribute('alt')).length,
           };
         });
         const fail = (what) => failures.push(`${vp.name} ${path}: ${what}`);
@@ -71,6 +73,8 @@ const VIEWPORTS = [
           if (m.magicLeftovers > 0) fail(`${m.magicLeftovers} magic-mode elements still in the DOM`);
           if (m.rotationLeftovers > 0) fail(`${m.rotationLeftovers} rotation ids or data-icon glyphs still in the DOM`);
           if (m.resumeGrid > 0) fail(`${m.resumeGrid} résumé grid elements still in the DOM`);
+          if (m.slides < 9) fail(`expected at least 9 slideshow photos, found ${m.slides}`);
+          if (m.slidesNoAlt > 0) fail(`${m.slidesNoAlt} slideshow photos without alt text`);
         }
         if (m.tinyText > 0) fail(`${m.tinyText} text elements under 12px`);
         errors.forEach(fail);
