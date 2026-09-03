@@ -50,6 +50,7 @@ const VIEWPORTS = [
             fraunces: !![...document.styleSheets].find(ss => (ss.href||'').includes('Fraunces')) || !![...document.querySelectorAll('link')].find(l => (l.href||'').includes('Fraunces')),
             emDash: (document.querySelector('main')?.innerText || '').includes('—'),
             ground: getComputedStyle(document.body).backgroundColor,
+            oldFonts: [...document.querySelectorAll('link[rel="stylesheet"]')].filter(l => /Newsreader|Karla/.test(l.href || '')).length,
             // 2026-09-03 pass: metadata roles must use a second face, not inherit the body serif
             metaInBodyFace: [...document.querySelectorAll('.now .k, .list .d, a.work .meta, .channel-lbl')]
               .filter(e => getComputedStyle(e).fontFamily === getComputedStyle(document.body).fontFamily).length,
@@ -66,6 +67,7 @@ const VIEWPORTS = [
         if (m.overflow > 0) fail(`horizontal overflow ${m.overflow}px`);
         if (m.headerH > 64) fail(`header ${Math.round(m.headerH)}px tall`);
         if (m.ground !== 'rgb(238, 241, 244)') fail(`ground is ${m.ground}, expected the haze white rgb(238, 241, 244)`);
+        if (m.oldFonts > 0) fail(`Newsreader or Karla still requested`);
         if (path === '/index.html') {
           if (m.workRows !== 4) fail(`expected 4 a.work rows, found ${m.workRows}`);
           if (m.nowRows !== 4) fail(`expected 4 .now rows, found ${m.nowRows}`);
