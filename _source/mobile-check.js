@@ -58,6 +58,7 @@ const VIEWPORTS = [
             resumeGrid: document.querySelectorAll('.resume, .res-col').length,
             slides: document.querySelectorAll('#slides img').length,
             brandMark: document.querySelectorAll('.top .brand svg[role="img"][aria-label="Chloe Lau"]').length,
+            poemsLink: document.querySelectorAll('a[href="essays/poems.html"]').length,
             slidesNoAlt: [...document.querySelectorAll('#slides img')].filter(i => !i.getAttribute('alt')).length,
           };
         });
@@ -78,6 +79,7 @@ const VIEWPORTS = [
           if (m.resumeGrid > 0) fail(`${m.resumeGrid} résumé grid elements still in the DOM`);
           if (m.slides < 9) fail(`expected at least 9 slideshow photos, found ${m.slides}`);
           if (m.brandMark !== 1) fail(`expected the handwritten wordmark svg in .brand, found ${m.brandMark}`);
+          if (m.poemsLink < 1) fail(`the poems page is not linked from the homepage`);
           if (m.slidesNoAlt > 0) fail(`${m.slidesNoAlt} slideshow photos without alt text`);
         }
         if (m.tinyText > 0) fail(`${m.tinyText} text elements under 12px`);
