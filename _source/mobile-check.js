@@ -7,7 +7,8 @@ const { webkit, devices } = require('playwright');
 const BASE = 'http://localhost:8765';
 const ALL_PAGES = ['/index.html','/case-studies/cariina.html','/case-studies/hoagie.html',
   '/case-studies/ai-fluency-lab.html','/case-studies/disney.html',
-  '/essays/working-with-ai.html','/essays/major-as-method.html','/essays/500ms-sound.html'];
+  '/essays/working-with-ai.html','/essays/major-as-method.html','/essays/500ms-sound.html',
+  '/essays/poems.html'];
 // PAGES=/index.html node _source/mobile-check.js  -> quick run on a subset
 const PAGES = process.env.PAGES ? process.env.PAGES.split(',') : ALL_PAGES;
 const VIEWPORTS = [
