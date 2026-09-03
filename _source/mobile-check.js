@@ -27,6 +27,7 @@ const VIEWPORTS = [
         const page = await ctx.newPage();
         const errors = [];
         page.on('response', r => { if (r.status() === 404) errors.push(`404 ${r.url()}`); });
+        page.on('pageerror', e => errors.push(`page error: ${e.message}`));
         try {
           await page.goto(BASE + path, { waitUntil: 'networkidle' });
         } catch (e) {

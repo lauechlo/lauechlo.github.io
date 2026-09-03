@@ -111,7 +111,6 @@
   /* About */
 
 
-
   .katz{display:block;border:0;border-radius:6px;width:100%;margin:8px 0 14px}
   .about-grid{display:grid;grid-template-columns:1fr 220px;gap:26px;align-items:stretch;margin-bottom:14px}
   .about-grid p:last-child{margin-bottom:0}
@@ -138,12 +137,7 @@
 
   /* Footer */
   .foot{display:flex;justify-content:space-between;margin-top:40px;padding-top:12px;border-top:1px solid var(--line)}
-  .foot button{appearance:none;background:none;border:0;padding:0;font:inherit;color:var(--muted);cursor:pointer}
-  .foot button:hover{color:var(--ink)}
 
-  /* Toast (used by magic mode) */
-  .toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(8px);background:var(--ink);color:var(--bone);padding:8px 14px;border-radius:8px;font-family:'Karla',sans-serif;font-size:13px;opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;z-index:300}
-  .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 
   /* Phones */
   @media (max-width:767px){
@@ -173,81 +167,15 @@
   /* Print: keep colors, hide interactive-only chrome */
   @media print{
     *{-webkit-print-color-adjust:exact !important;print-color-adjust:exact !important}
-    #tweaks-popover, .foot button, .toast, .magic-particle{display:none !important}
     .top nav{display:none}
     a.work .arr, .list .gh, h2.sect .cta{display:none}
     .resume{grid-template-columns:repeat(3,1fr)}
     .intro{grid-template-columns:1fr 150px}
   }
 
-  /* ─── Tweaks popover (vanilla) ─── */
-  #tweaks-popover{position:fixed;bottom:20px;right:20px;width:260px;z-index:400;background:var(--panel);border:1px solid var(--line);border-radius:14px;box-shadow:0 18px 40px -16px rgba(14,26,20,0.35);font-family:'Karla',ui-sans-serif,system-ui,sans-serif;transform:translateY(8px);opacity:0;transition:opacity .18s ease, transform .18s ease;pointer-events:none}
-  #tweaks-popover.open{opacity:1;transform:translateY(0);pointer-events:auto}
-  #tweaks-popover .twk-hd{display:flex;align-items:center;justify-content:space-between;padding:12px 14px 8px;font-size:13px}
-  #tweaks-popover .twk-hd b{font-weight:500}
-  #tweaks-popover .twk-x{appearance:none;background:none;border:0;color:var(--muted);width:32px;height:32px;border-radius:6px;cursor:pointer;font-size:13px;line-height:1;padding:0}
-  #tweaks-popover .twk-x:hover{background:var(--paper);color:var(--ink)}
-  #tweaks-popover .twk-body{padding:4px 14px 14px;display:flex;flex-direction:column;gap:12px}
-  #tweaks-popover .twk-row{display:flex;align-items:center;justify-content:space-between;gap:10px}
-  #tweaks-popover .twk-row-stacked{flex-direction:column;align-items:stretch;gap:6px}
-  #tweaks-popover .twk-lbl{font-size:12px;color:var(--ink-2)}
-  #tweaks-popover .twk-note{font-family:'Karla',ui-sans-serif,system-ui,sans-serif;font-size:10px;color:var(--muted);line-height:1.55;padding:0 0 4px}
-  #tweaks-popover .twk-note b{color:var(--ink);font-weight:500}
-  #tweaks-popover .twk-switch{position:relative;display:inline-block;width:34px;height:20px}
-  #tweaks-popover .twk-switch input{position:absolute;inset:0;opacity:0;cursor:pointer;margin:0}
-  #tweaks-popover .twk-switch span{position:absolute;inset:0;background:rgba(0,0,0,0.18);border-radius:999px;transition:background .15s ease}
-  #tweaks-popover .twk-switch span::before{content:"";position:absolute;top:2px;left:2px;width:16px;height:16px;border-radius:50%;background:#fff;box-shadow:0 1px 2px rgba(0,0,0,0.25);transition:transform .15s ease}
-  #tweaks-popover .twk-switch input:checked + span{background:var(--forest)}
-  #tweaks-popover .twk-switch input:checked + span::before{transform:translateX(14px)}
-  #tweaks-popover .twk-seg{display:flex;background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:2px;gap:2px}
-  #tweaks-popover .twk-seg button{flex:1;appearance:none;border:0;background:transparent;font:inherit;font-size:11.5px;padding:5px 6px;border-radius:6px;cursor:pointer;color:var(--ink-2);transition:background .12s ease, color .12s ease}
-  #tweaks-popover .twk-seg button:hover{color:var(--ink)}
-  #tweaks-popover .twk-seg button.on{background:var(--bone);color:var(--ink);box-shadow:0 1px 2px rgba(0,0,0,0.08)}
-
-  /* ─── MAGIC MODE (kept selectors only; deleted rules targeted removed components) ─── */
-  body[data-magic="on"]::before{
-    content:"";position:fixed;inset:-20%;background:
-      radial-gradient(circle at 18% 22%, color-mix(in oklab, var(--forest) 22%, transparent), transparent 40%),
-      radial-gradient(circle at 82% 78%, color-mix(in oklab, var(--slate) 22%, transparent), transparent 40%),
-      radial-gradient(circle at 60% 12%, color-mix(in oklab, var(--slate) 12%, transparent), transparent 35%);
-    filter:blur(60px);
-    pointer-events:none;z-index:-2;
-    animation:auroraDrift 28s ease-in-out infinite alternate;
-    opacity:0.55;
-  }
-  @keyframes auroraDrift{
-    0%{transform:translate(0,0) rotate(0deg) scale(1.0)}
-    50%{transform:translate(40px,-30px) rotate(20deg) scale(1.1)}
-    100%{transform:translate(-30px,30px) rotate(-15deg) scale(1.05)}
-  }
-
-  /* Section headers letter-stagger on view */
-  body[data-magic="on"] h2.sect{opacity:0;transform:translateY(8px);transition:opacity .8s ease, transform .8s cubic-bezier(.2,.7,.3,1)}
-  body[data-magic="on"] h2.sect.seen{opacity:1;transform:translateY(0)}
-
-  /* Cursor trail particles */
-  .magic-particle{position:fixed;pointer-events:none;z-index:9999;font-family:'Newsreader',Georgia,serif;font-style:italic;will-change:transform,opacity;text-shadow:0 0 8px currentColor}
-
-  /* Harp ripple */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 </style>
 </head>
-<body data-magic="off">
+<body>
 <main id="top">
   <div class="top">
     <a class="brand" href="#top">Chloe Lau</a>
@@ -387,57 +315,11 @@
 
   <div class="foot">
     <span>© Chloe Lau</span>
-    <button id="open-tweaks" type="button" title="Toggle magic mode">click for magic ✨</button>
   </div>
 </main>
 
 
-<div class="toast" id="toast"></div>
-
-<!-- Magic mode popover (vanilla) -->
-<div id="tweaks-popover" hidden>
-  <div class="twk-hd">
-    <b>Magic mode</b>
-    <button type="button" class="twk-x" id="twk-close" aria-label="Close">✕</button>
-  </div>
-  <div class="twk-body">
-    <div class="twk-row">
-      <span class="twk-lbl">Enabled</span>
-      <label class="twk-switch"><input type="checkbox" id="twk-magic" /><span></span></label>
-    </div>
-    <div class="twk-note">Surprise! Click and move your mouse around</div>
-  </div>
-</div>
-
-
 <script>
-  const toast = document.getElementById('toast');
-  function showToast(msg){
-    toast.textContent = msg;
-    toast.classList.add('show');
-    setTimeout(()=>toast.classList.remove('show'), 2400);
-  }
-
-  function sparkle(){
-    const cx = window.innerWidth/2, cy = window.innerHeight/2;
-    for(let i=0;i<22;i++){
-      const s = document.createElement('div');
-      s.textContent = ['✦','✧','★','♪'][i%4];
-      s.style.cssText = `position:fixed;left:${cx}px;top:${cy}px;color:var(--slate);font-size:${14+Math.random()*18}px;pointer-events:none;z-index:500;transition:all 1.2s cubic-bezier(.2,.7,.3,1);opacity:1`;
-      document.body.appendChild(s);
-      requestAnimationFrame(()=>{
-        const angle = (i/22)*Math.PI*2;
-        const dist = 130 + Math.random()*180;
-        s.style.transform = `translate(${Math.cos(angle)*dist}px,${Math.sin(angle)*dist}px) rotate(${(Math.random()-0.5)*360}deg)`;
-        s.style.opacity = '0';
-      });
-      setTimeout(()=>s.remove(),1300);
-    }
-  }
-
-  // expose splitHeaders for the magic toggle
-  window.splitHeaders = splitHeaders;
-
   // ────────── READING ROTATION ──────────
   // Rotates the Currently > Reading row deterministically by day-of-year
   (function(){
@@ -531,124 +413,6 @@
     });
   })();
 
-  // ────────── MAGIC LAYER ──────────
-  const body = document.body;
-
-  // Per-char split previously destroyed parent letter-spacing on h2.sect — now a no-op.
-  // Window-exposed below so existing callers (applyState) keep working.
-  function splitHeaders(){ /* intentionally empty */ }
-
-  // IntersectionObserver: reveal headers (magic-mode h2.sect fade-in)
-  const io = new IntersectionObserver(entries=>{
-    entries.forEach(e=>{
-      if(!e.isIntersecting) return;
-      if(e.target.matches('h2.sect')) e.target.classList.add('seen');
-      io.unobserve(e.target);
-    });
-  },{threshold:0.2});
-  document.querySelectorAll('h2.sect').forEach(h=>io.observe(h));
-
-  // Cursor trail (magic only) — section-aware glyphs
-  let lastTrail = 0;
-  const SECTION_GLYPHS = {
-    listening: ['♪','♫','♬','♩'],
-    reading:   ['§','¶','‧','*'],
-    fav:       ['❧','♡','✦'],
-    about:     ['❧','❀','✿','✾'],
-    projects:  ['✦','✧','✶','✷'],
-    hero:      ['✦','✧','✶'],
-    writing:   ['¶','§','‧','*'],
-    default:   ['✦','✧','✤','♪','♫','*']
-  };
-  function glyphSetForElement(el){
-    if(!el) return SECTION_GLYPHS.default;
-    if(el.closest('.fav-card')) return SECTION_GLYPHS.fav;
-    const nowRow = el.closest('.now li');
-    if(nowRow){
-      const k = nowRow.querySelector('.k');
-      const label = k && k.textContent.trim();
-      if(label === 'Listening') return SECTION_GLYPHS.listening;
-      if(label === 'Reading')   return SECTION_GLYPHS.reading;
-    }
-    if(el.closest('.about-wrap')) return SECTION_GLYPHS.about;
-    if(el.closest('.project'))    return SECTION_GLYPHS.projects;
-    if(el.closest('.post, .writing')) return SECTION_GLYPHS.writing;
-    if(el.closest('.hero'))       return SECTION_GLYPHS.hero;
-    return SECTION_GLYPHS.default;
-  }
-  window.addEventListener('mousemove', e=>{
-    if(body.dataset.magic !== 'on') return;
-    const now = performance.now();
-    if(now - lastTrail < 55) return;
-    lastTrail = now;
-    const glyphs = glyphSetForElement(e.target);
-    spawnParticle(e.clientX + (Math.random()-0.5)*8, e.clientY + (Math.random()-0.5)*8, {glyph: glyphs[(Math.random()*glyphs.length)|0], life: 900, drift: 30, size: 10 + Math.random()*8});
-  });
-
-  // Click burst (magic only) — section-aware glyphs
-  document.addEventListener('click', e=>{
-    if(body.dataset.magic !== 'on') return;
-    if(e.target.closest('#tweaks-popover')) return;
-    burst(e.clientX, e.clientY, 14, glyphSetForElement(e.target));
-  });
-
-  function burst(cx, cy, n, glyphs){
-    glyphs = glyphs || SECTION_GLYPHS.default;
-    for(let i=0;i<n;i++){
-      const angle = (i/n)*Math.PI*2 + Math.random()*0.3;
-      const dist = 60 + Math.random()*100;
-      spawnParticle(cx, cy, {
-        glyph: glyphs[(Math.random()*glyphs.length)|0],
-        life: 950 + Math.random()*300,
-        drift: 0,
-        size: 12 + Math.random()*16,
-        dx: Math.cos(angle)*dist,
-        dy: Math.sin(angle)*dist - 30,
-        rotate: (Math.random()-0.5)*540
-      });
-    }
-  }
-
-  function spawnParticle(x, y, opts){
-    const el = document.createElement('div');
-    el.className = 'magic-particle';
-    el.textContent = opts.glyph;
-    const colors = ['var(--forest)','var(--slate)','var(--slate-2)','var(--forest-2)'];
-    el.style.color = colors[(Math.random()*colors.length)|0];
-    el.style.left = x+'px';
-    el.style.top = y+'px';
-    el.style.fontSize = opts.size+'px';
-    el.style.transition = `transform ${opts.life}ms cubic-bezier(.2,.7,.3,1), opacity ${opts.life}ms ease-out`;
-    el.style.opacity = '1';
-    document.body.appendChild(el);
-    requestAnimationFrame(()=>{
-      const dx = opts.dx !== undefined ? opts.dx : (Math.random()-0.5)*opts.drift;
-      const dy = opts.dy !== undefined ? opts.dy : -opts.drift - Math.random()*opts.drift;
-      const rot = opts.rotate !== undefined ? opts.rotate : (Math.random()-0.5)*120;
-      el.style.transform = `translate(${dx}px, ${dy}px) rotate(${rot}deg) scale(0.4)`;
-      el.style.opacity = '0';
-    });
-    setTimeout(()=>el.remove(), opts.life + 50);
-  }
-
-  // Override sparkle to use burst at center
-  window.sparkle = function(){
-    burst(window.innerWidth/2, window.innerHeight/2, 26);
-  };
-
-  // ────────── TWEAKS PANEL OPENER ──────────
-  // Door: colophon button ("click for magic").
-  const tweaksBtn = document.getElementById('open-tweaks');
-  if(tweaksBtn) tweaksBtn.addEventListener('click', ()=>window.openTweaks && window.openTweaks());
-  let twkBuf = '';
-  document.addEventListener('keydown', e=>{
-    if(e.target.matches('input, textarea')) return;
-    if(/^[a-z]$/i.test(e.key)){
-      twkBuf = (twkBuf + e.key.toLowerCase()).slice(-5);
-      if(twkBuf === 'magic'){ window.openTweaks && window.openTweaks(); showToast('magic mode by ✨'); twkBuf = ''; }
-    }
-  });
-
   // ────────── 500MS HARP PLUCK ──────────
   // Hover the 500ms essay card → half a second of synthesized harp.
   // The site's only interaction that *is* the thing being written about.
@@ -680,8 +444,6 @@
   const post500 = document.querySelector('a.title[href*="500ms-sound"]');
   if(post500) post500.addEventListener('mouseenter', pluck500);
 
-  // Expose for tweak
-  window.splitHeaders = splitHeaders;
   // ────────── ABOUT SLIDESHOW ──────────
   (function(){
     const box = document.getElementById('slides');
@@ -701,52 +463,6 @@
   })();
 </script>
 
-<script>
-  // ────────── MAGIC MODE POPOVER ──────────
-  (function(){
-    const body = document.body;
-    const popover = document.getElementById('tweaks-popover');
-    const closeBtn = document.getElementById('twk-close');
-    const magicEl = document.getElementById('twk-magic');
-    if(!popover || !magicEl) return;
 
-    const KEY = 'chloelau-tweaks';
-    const defaults = { magic: false };
-    let state;
-    try { state = Object.assign({}, defaults, JSON.parse(localStorage.getItem(KEY) || '{}')); }
-    catch(_){ state = Object.assign({}, defaults); }
-
-    function applyState(){
-      body.dataset.magic = state.magic ? 'on' : 'off';
-      magicEl.checked = !!state.magic;
-      if(state.magic && typeof window.splitHeaders === 'function') window.splitHeaders();
-    }
-    function save(){ try { localStorage.setItem(KEY, JSON.stringify(state)); } catch(_){} }
-
-    applyState();
-
-    function showPopover(){
-      popover.hidden = false;
-      requestAnimationFrame(()=>popover.classList.add('open'));
-    }
-    function hidePopover(){
-      popover.classList.remove('open');
-      setTimeout(()=>{ popover.hidden = true; }, 200);
-    }
-    closeBtn.addEventListener('click', hidePopover);
-    document.addEventListener('click', function(e){
-      if(popover.hidden || !popover.classList.contains('open')) return;
-      if(popover.contains(e.target) || e.target.closest('#open-tweaks')) return;
-      hidePopover();
-    });
-    magicEl.addEventListener('change', () => {
-      state.magic = magicEl.checked;
-      save(); applyState();
-    });
-
-    window.openTweaks = showPopover;
-    window.closeTweaks = hidePopover;
-  })();
-</script>
 </body>
 </html>
