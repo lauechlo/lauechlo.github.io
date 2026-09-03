@@ -5,9 +5,11 @@ const { execSync } = require('child_process');
 try { module.paths.push(execSync('npm root -g', { encoding: 'utf8' }).trim()); } catch (_) {}
 const { webkit, devices } = require('playwright');
 const BASE = 'http://localhost:8765';
-const PAGES = ['/index.html','/case-studies/cariina.html','/case-studies/hoagie.html',
+const ALL_PAGES = ['/index.html','/case-studies/cariina.html','/case-studies/hoagie.html',
   '/case-studies/ai-fluency-lab.html','/case-studies/disney.html',
   '/essays/working-with-ai.html','/essays/major-as-method.html','/essays/500ms-sound.html'];
+// PAGES=/index.html node _source/mobile-check.js  -> quick run on a subset
+const PAGES = process.env.PAGES ? process.env.PAGES.split(',') : ALL_PAGES;
 const VIEWPORTS = [
   { name: 'SE 375',      ...devices['iPhone 13'], viewport: { width: 375, height: 667 } },
   { name: 'i14 390',     ...devices['iPhone 13'], viewport: { width: 390, height: 664 } },
@@ -45,6 +47,10 @@ const VIEWPORTS = [
               .filter(e => { const s = getComputedStyle(e); return e.tagName !== 'IMG' && e.tagName !== 'IFRAME' && parseFloat(s.borderRadius) > 8 && s.borderStyle !== 'none' && s.borderWidth !== '0px'; }).length,
             fraunces: !![...document.styleSheets].find(ss => (ss.href||'').includes('Fraunces')) || !![...document.querySelectorAll('link')].find(l => (l.href||'').includes('Fraunces')),
             emDash: (document.querySelector('main')?.innerText || '').includes('—'),
+            // 2026-09-03 pass: metadata roles must use a second face, not inherit the body serif
+            metaInBodyFace: [...document.querySelectorAll('.now .k, .list .d, a.work .meta, .channel-lbl')]
+              .filter(e => getComputedStyle(e).fontFamily === getComputedStyle(document.body).fontFamily).length,
+            magicLeftovers: document.querySelectorAll('#tweaks-popover, [data-magic], .foot button, .toast, #open-tweaks, .magic-particle').length,
           };
         });
         const fail = (what) => failures.push(`${vp.name} ${path}: ${what}`);
@@ -57,6 +63,8 @@ const VIEWPORTS = [
           if (m.boxes > 0) fail(`${m.boxes} card-like boxes (radius>8 with border) in main`);
           if (m.fraunces) fail(`Fraunces still loaded`);
           if (m.emDash) fail(`em dash in homepage copy`);
+          if (m.metaInBodyFace > 0) fail(`${m.metaInBodyFace} metadata elements still in the body face`);
+          if (m.magicLeftovers > 0) fail(`${m.magicLeftovers} magic-mode elements still in the DOM`);
         }
         if (m.tinyText > 0) fail(`${m.tinyText} text elements under 12px`);
         errors.forEach(fail);

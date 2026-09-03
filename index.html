@@ -43,10 +43,13 @@
     --line:rgba(26,23,13,0.07);
     --green-dim:#FBF7E6;
     --slate-dim:#EDE4C4;
+    --font-heading:'Newsreader',Georgia,serif;
+    --font-body:'Newsreader',Georgia,serif;
+    --font-meta:'Karla',ui-sans-serif,system-ui,sans-serif;
   }
 
   html{background:var(--bone)}
-  body{margin:0;background:var(--bone);color:var(--ink);font-family:'Newsreader',Georgia,serif;font-optical-sizing:auto;font-size:17px;line-height:1.5;-webkit-font-smoothing:antialiased}
+  body{margin:0;background:var(--bone);color:var(--ink);font-family:var(--font-body);font-optical-sizing:auto;font-size:17px;line-height:1.5;-webkit-font-smoothing:antialiased}
   a{color:var(--forest);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px}
   a:hover{color:var(--slate)}
   img{max-width:100%;display:block}
@@ -68,8 +71,12 @@
 
   /* Section headings */
   h2.sect{font-size:17px;font-weight:600;letter-spacing:0;margin:38px 0 10px}
-  h2.sect .cta{font-family:'Karla',ui-sans-serif,system-ui,sans-serif;font-size:12.5px;font-weight:400;color:var(--muted);float:right;text-decoration:none;margin-top:4px}
+  h2.sect .cta{font-family:var(--font-meta);font-size:13px;font-weight:400;color:var(--muted);float:right;text-decoration:none;margin-top:4px}
   h2.sect .cta:hover{color:var(--ink)}
+
+  /* Metadata tier: the second face, never under 12px */
+  .now .k, .list .d, a.work .meta, .channel-lbl, .top nav a, .foot{font-family:var(--font-meta);font-size:13px;line-height:1.5}
+  .now .k{font-weight:500}
 
   /* Currently */
   .now{list-style:none;margin:0;padding:0}
@@ -77,7 +84,7 @@
   .now li{display:grid;grid-template-columns:20px 96px 1fr;gap:10px;padding:7px 0;border-top:1px solid var(--line);align-items:baseline}
   .now li:last-child{border-bottom:1px solid var(--line)}
   .now li::before{content:attr(data-icon);color:var(--forest)}
-  .now .k{padding-top:2px}
+  .now .k{padding-top:3px}
 
   /* Work rows */
   a.work{display:grid;grid-template-columns:96px 1fr;gap:16px;margin:0 0 18px;color:var(--ink);text-decoration:none;align-items:start}
@@ -96,7 +103,7 @@
   .list li{display:grid;grid-template-columns:82px 1fr;gap:12px;padding:7px 0;border-top:1px solid var(--line)}
   .list.no-dates li{grid-template-columns:1fr}
   .list li:last-child{border-bottom:1px solid var(--line)}
-  .list .d{padding-top:4px;white-space:nowrap}
+  .list .d{padding-top:5px;white-space:nowrap}
   .list li>a{color:var(--ink);text-decoration:none}
   .list li>a b{font-weight:500}
   .list li>a.title{color:var(--forest);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px}
