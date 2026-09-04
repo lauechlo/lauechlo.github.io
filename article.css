@@ -266,3 +266,7 @@ article ul li::marker{color:var(--slate)}
 /* Second accent: the lighter pen green */
 .my-role b{color:var(--forest-2)}
 .article-nav a:hover{color:var(--forest-2)}
+
+/* Poems: a shaped poem keeps its line lengths; it scrolls sideways on narrow screens instead of wrapping */
+article p.shape{white-space:nowrap;overflow-x:auto;font-size:15px;line-height:1.6;margin-bottom:14px}
+@media (max-width:767px){article p.shape{font-size:12.5px}}
