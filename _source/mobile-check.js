@@ -70,7 +70,7 @@ const VIEWPORTS = [
         if (m.oldFonts > 0) fail(`Newsreader or Karla still requested`);
         if (path === '/index.html') {
           if (m.workRows !== 4) fail(`expected 4 a.work rows, found ${m.workRows}`);
-          if (m.nowRows !== 4) fail(`expected 4 .now rows, found ${m.nowRows}`);
+          if (m.nowRows !== 5) fail(`expected 5 .now rows, found ${m.nowRows}`);
           if (m.upperCase > 0) fail(`${m.upperCase} uppercase-transformed elements`);
           if (m.boxes > 0) fail(`${m.boxes} card-like boxes (radius>8 with border) in main`);
           if (m.fraunces) fail(`Fraunces still loaded`);
