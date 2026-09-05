@@ -61,6 +61,7 @@ const VIEWPORTS = [
             brandMark: document.querySelectorAll('.top .brand svg[role="img"][aria-label="Chloe Lau"]').length,
             poemsLink: document.querySelectorAll('a[href="essays/poems.html"]').length,
             nowMarks: document.querySelectorAll('.now li > svg[aria-hidden="true"]').length,
+            slidesAspect: (r => r.height ? r.width / r.height : 0)((document.getElementById('slides') || document.body).getBoundingClientRect()),
             slidesNoAlt: [...document.querySelectorAll('#slides img')].filter(i => !i.getAttribute('alt')).length,
           };
         });
@@ -84,6 +85,7 @@ const VIEWPORTS = [
           if (m.brandMark !== 1) fail(`expected the handwritten wordmark svg in .brand, found ${m.brandMark}`);
           if (m.poemsLink < 1) fail(`the poems page is not linked from the homepage`);
           if (m.nowMarks !== 5) fail(`expected 5 pen-mark svgs on the Currently rows, found ${m.nowMarks}`);
+          if (m.slidesAspect < 0.76 || m.slidesAspect > 0.84) fail(`slideshow box is ${m.slidesAspect.toFixed(2)} wide per tall, expected a fixed 4:5 portrait`);
           if (m.slidesNoAlt > 0) fail(`${m.slidesNoAlt} slideshow photos without alt text`);
         }
         if (m.tinyText > 0) fail(`${m.tinyText} text elements under 12px`);

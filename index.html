@@ -109,7 +109,7 @@
   .katz{display:block;border:0;border-radius:6px;width:100%;margin:8px 0 14px}
   .about-grid{display:grid;grid-template-columns:1fr 220px;gap:26px;align-items:stretch;margin-bottom:14px}
   .about-grid p:last-child{margin-bottom:0}
-  .slides{position:relative;height:100%;min-height:200px;overflow:hidden;border-radius:6px;background:var(--bone-2)}
+  .slides{position:relative;aspect-ratio:4/5;align-self:start;overflow:hidden;border-radius:6px;background:var(--bone-2)}
   .slides img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .9s ease}
   .slides img.on{opacity:1}
 
@@ -139,7 +139,7 @@
     a.work{grid-template-columns:72px 1fr;gap:12px}
     .list li{grid-template-columns:70px 1fr}
     .about-grid{grid-template-columns:1fr;gap:16px}
-    .slides{height:260px}
+    .slides{width:min(240px,100%)}
     a.work .meta{display:block}
     a.work .md{display:block;margin-top:1px}
     .now li{grid-template-columns:18px 84px 1fr}
@@ -251,6 +251,7 @@
     <img src="assets/rainier-waterfront.JPG" alt="On the Tacoma waterfront with Mount Rainier behind" loading="lazy" decoding="async" style="object-position:55% 45%" />
     <img src="assets/crochet-cow.jpg" alt="A crocheted cow Chloe made, white with blue and brown patches" loading="lazy" decoding="async" style="object-position:50% 55%" />
     <img src="assets/calligraphy-oyster.jpg" alt="A calligraphy piece Chloe made that reads the world is your oyster, lettered inside a globe" loading="lazy" decoding="async" style="object-position:50% 45%" />
+    <img src="assets/wood-room-portrait.jpg" alt="Chloe in a floral dress in front of carved wood paneling" loading="lazy" decoding="async" style="object-position:50% 30%" />
   </div>
   </section>
   <iframe class="katz" data-testid="embed-iframe"
