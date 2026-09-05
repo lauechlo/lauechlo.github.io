@@ -51,6 +51,7 @@ const VIEWPORTS = [
             emDash: (document.querySelector('main')?.innerText || '').includes('—'),
             ground: getComputedStyle(document.body).backgroundColor,
             icon96: document.querySelectorAll('link[rel="icon"][sizes="96x96"], link[rel="icon"][href="/favicon.ico"]').length,
+            personLd: [...document.querySelectorAll('script[type="application/ld+json"]')].filter(s => /"Person"/.test(s.textContent) && /"WebSite"/.test(s.textContent)).length,
             oldFonts: [...document.querySelectorAll('link[rel="stylesheet"]')].filter(l => /Vollkorn|Commissioner/.test(l.href || '')).length,
             // 2026-09-03 pass: metadata roles must use a second face, not inherit the body serif
             metaInBodyFace: [...document.querySelectorAll('.now .k, .list .d, a.work .meta, .channel-lbl')]
@@ -70,6 +71,7 @@ const VIEWPORTS = [
         if (m.overflow > 0) fail(`horizontal overflow ${m.overflow}px`);
         if (m.headerH > 64) fail(`header ${Math.round(m.headerH)}px tall`);
         if (m.icon96 < 2) fail(`missing the 96px icon or the root favicon.ico (Google needs a 48-multiple icon)`);
+        if (path === '/index.html' && m.personLd < 1) fail(`homepage lacks the WebSite + Person structured data`);
         if (m.ground !== 'rgb(238, 241, 244)') fail(`ground is ${m.ground}, expected the haze white rgb(238, 241, 244)`);
         if (m.oldFonts > 0) fail(`Vollkorn or Commissioner still requested (owner chose Newsreader + Karla on 2026-09-04)`);
         if (path === '/index.html') {
