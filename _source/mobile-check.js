@@ -81,7 +81,7 @@ const VIEWPORTS = [
         if (m.headerH > 64) fail(`header ${Math.round(m.headerH)}px tall`);
         if (m.icon96 < 2) fail(`missing the 96px icon or the root favicon.ico (Google needs a 48-multiple icon)`);
         if (path === '/index.html' && m.personLd < 1) fail(`homepage lacks the WebSite + Person structured data`);
-        if (m.ground !== 'rgb(238, 241, 244)') fail(`ground is ${m.ground}, expected the haze white rgb(238, 241, 244)`);
+        if (m.ground !== 'rgb(233, 240, 236)') fail(`ground is ${m.ground}, expected the sage paper rgb(233, 240, 236)`);
         if (m.oldFonts > 0) fail(`Vollkorn or Commissioner still requested (owner chose Newsreader + Karla on 2026-09-04)`);
         if (path === '/index.html') {
           if (m.workRows !== 4) fail(`expected 4 a.work rows, found ${m.workRows}`);

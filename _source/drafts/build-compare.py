@@ -67,6 +67,7 @@ BAR_CSS = """
 # ---------- ground-compare ----------
 
 GROUND_CSS = BAR_CSS + """
+  html[data-ground="haze"]{--bone:#EEF1F4;--bone-2:#DDE3E9}
   html[data-ground="sage"]{--bone:#E9F0EC;--bone-2:#D5E3DB}
   html[data-ground="mist"]{--bone:#E4E9ED;--bone-2:#D2DBE2}
 
@@ -103,8 +104,8 @@ GROUND_CSS = BAR_CSS + """
 
 GROUND_BAR = """<div class="bar">
   <span class="g"><b>Ground</b>
-    <label><input type="radio" name="ground" value="haze" checked /> 1 haze, current</label>
-    <label><input type="radio" name="ground" value="sage" /> 2 sage paper #E9F0EC</label>
+    <label><input type="radio" name="ground" value="haze" checked /> 1 haze, before 2026-09-13</label>
+    <label><input type="radio" name="ground" value="sage" /> 2 sage paper #E9F0EC, chosen</label>
     <label><input type="radio" name="ground" value="mist" /> 3 deeper mist #E4E9ED</label></span>
   <span class="g"><label><input type="checkbox" id="band" /> b band behind Currently</label></span>
   <span class="g"><label><input type="checkbox" id="deep" /> d deep close</label></span>

@@ -3,8 +3,8 @@ body{overflow-x:clip}
 /* Sub-page article styles. Tokens mirror index.html. */
 
 :root{
-  --bone:#EEF1F4;
-  --bone-2:#DDE3E9;
+  --bone:#E9F0EC;
+  --bone-2:#D5E3DB;
   --ink:#34383D;
   --ink-2:#464B51;
   --muted:#53585E;
@@ -38,7 +38,7 @@ a{color:inherit;text-decoration:none}
 /* Top bar */
 .topbar{
   position:sticky;top:0;z-index:10;
-  background:rgba(238,241,244,0.94);
+  background:rgba(233,240,236,0.94);
   backdrop-filter:blur(8px);
   border-bottom:1px solid var(--line);
   padding:14px 32px;
