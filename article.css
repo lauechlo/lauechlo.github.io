@@ -57,6 +57,7 @@ a{color:inherit;text-decoration:none}
   font-size:12.5px;
   color:var(--muted);}
 .topbar .crumb b{color:var(--ink-2);font-weight:500}
+.topbar a.crumb:hover{color:var(--ink)}
 
 /* Article shell */
 article{
@@ -99,9 +100,6 @@ article h1{
   letter-spacing:-0.01em;
   color:var(--ink);
   margin-bottom:18px;}
-article h1 em{
-  font-style:italic;
-  color:var(--slate);}
 
 /* Subhead meta lines */
 .meta{
@@ -139,6 +137,8 @@ article p{
   margin-bottom:18px;}
 article p + p{margin-top:0}
 article em{font-style:italic;color:var(--slate)}
+article p a{color:var(--forest);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px}
+article p a:hover{color:var(--slate)}
 article strong{font-weight:500;color:var(--ink)}
 
 /* Pull quotes */
@@ -162,37 +162,6 @@ article ul li{
   color:var(--ink-2);
   margin-bottom:8px;}
 article ul li::marker{color:var(--slate)}
-
-/* Section kicker (small mono label above a case-study h2) */
-.kicker{
-  font-family:var(--font-meta);
-  font-weight:500;
-  font-size:12.5px;
-  color:var(--muted);
-  display:block;
-  margin:40px 0 0;}
-.kicker + h2{margin-top:4px}
-
-/* Case-study sub-index (visible spine of sections) */
-.subindex{
-  font-family:var(--font-meta);
-  font-size:12.5px;
-  color:var(--muted);
-  padding:14px 0;
-  margin:0 0 8px;
-  border-top:1px solid var(--line);
-  border-bottom:1px solid var(--line);
-  line-height:1.95;}
-.subindex b{
-  font-family:var(--font-meta);
-  display:block;
-  color:var(--slate);
-  font-weight:600;font-size:12.5px;
-  margin-bottom:6px;}
-.subindex a{color:var(--ink-2);border-bottom:1px solid var(--hair);padding-bottom:1px;transition:color .15s ease,border-color .15s ease}
-.subindex a:hover{color:var(--slate);border-color:var(--slate)}
-.subindex .sep{opacity:0.35;margin:0 7px}
-
 
 /* Footer */
 .article-footer{
@@ -221,7 +190,6 @@ article ul li::marker{color:var(--slate)}
   article p, article ul li{font-size:16px}
 
   /* Tap targets: min 44px height for touch accessibility */
-  .subindex a{display:inline-block;padding:11px 0 1px}
   .article-footer a{display:inline-block;padding:11px 0 1px}
 }
 
@@ -265,7 +233,6 @@ article ul li::marker{color:var(--slate)}
 
 /* Second accent: the lighter pen green */
 .my-role b{color:var(--forest-2)}
-.article-nav a:hover{color:var(--forest-2)}
 
 /* Poems: a shaped poem keeps its line lengths; it scrolls sideways on narrow screens instead of wrapping */
 article p.shape{white-space:nowrap;overflow-x:auto;font-size:15px;line-height:1.6;margin-bottom:14px}
