@@ -282,7 +282,8 @@ HOVER_CSS = BAR_CSS + """
   .article-footer a{color:var(--ink-2);text-decoration:none;display:inline-block;transition:color .15s}
   .article-footer a>span{border-bottom:1px solid var(--line);padding-bottom:1px}
   .article-footer a:hover{color:var(--slate-2)}
-  .article-footer a[data-deck]::after{content:attr(data-deck);display:block;font-size:13px;color:var(--muted);margin-top:4px;min-height:19px;opacity:0;transition:opacity .15s;text-align:right}
+  .article-footer a[data-deck]{text-align:right}
+  .article-footer a[data-deck]::after{content:attr(data-deck);display:block;font-size:13px;color:var(--muted);margin-top:4px;min-height:19px;opacity:0;transition:opacity .15s}
   html[data-e="1"] .article-footer a:hover::after{opacity:1}
 
   /* touch rules, the same ones the real change puts under @media (hover:none) */
@@ -392,7 +393,8 @@ def build_hover():
     for key, line in TELL.items():
         m = re.search(rf'(<a class="work" href="\.\./\.\./case-studies/{key}\.html">.*?</a>)', html, re.S)
         row = m.group(1)
-        new = re.sub(r'</p>(\s*</div>\s*</a>)$', lambda mm: f'</p>\n      <p class="tell">{line}</p>' + mm.group(1), row)
+        # the real page carries the lesson lines since 2026-09-12; only insert when a row lacks one
+        new = row if 'class="tell"' in row else re.sub(r'</p>(\s*</div>\s*</a>)$', lambda mm: f'</p>\n      <p class="tell">{line}</p>' + mm.group(1), row)
         assert 'class="tell"' in new, key
         thumb = OUT / 'thumbs' / (key + pathlib.Path(ALT_THUMB[key]).suffix.lower().replace('.jpeg', '.jpg'))
         resize(ROOT / 'assets' / ALT_THUMB[key], thumb, 192)
@@ -401,6 +403,8 @@ def build_hover():
         html = html.replace(row, new)
     # blogs: the first sentence
     for key, line in DECK.items():
+        if re.search(rf'href="\.\./\.\./essays/{key}\.html">.*?</a><span class="deck">', html):
+            continue  # the real page carries the first sentences already
         html, n = re.subn(rf'(<a class="title" href="\.\./\.\./essays/{key}\.html">.*?</a>)</li>', rf'\1<span class="deck">{line}</span></li>', html)
         assert n == 1, key
     # currently: a photo in the margin for the rows that have one

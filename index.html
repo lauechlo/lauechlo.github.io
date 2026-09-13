@@ -86,12 +86,15 @@
   .now li>svg{width:28px;height:28px;color:var(--forest);align-self:center;justify-self:start;overflow:visible}
 
   /* Work rows */
-  a.work{display:grid;grid-template-columns:96px 1fr;gap:16px;margin:0 0 18px;color:var(--ink);text-decoration:none;align-items:start}
+  a.work{display:grid;grid-template-columns:96px 1fr;gap:16px;margin:0 0 8px;color:var(--ink);text-decoration:none;align-items:start}
   a.work .thumb{aspect-ratio:16/10;overflow:hidden;background:var(--bone-2)}
   a.work .thumb img{width:100%;height:100%;object-fit:cover}
   a.work .meta{margin:0 0 2px;display:flex;justify-content:space-between;gap:12px}
   a.work b{font-weight:500}
   a.work p{margin:0}
+  /* On hover, one sentence from the case study itself. The reserved line plus 8px keeps it attached to its own row. */
+  a.work .tell{font-family:var(--font-meta);font-size:13px;line-height:18px;color:var(--muted);margin:0;min-height:18px;opacity:0;transition:opacity .15s ease}
+  a.work:hover .tell,a.work:focus-visible .tell{opacity:1}
   .list .gh{width:14px;height:14px;display:inline-block;vertical-align:-2px;margin-left:6px;opacity:.7}
   .list a:hover .gh{opacity:1}
 
@@ -104,6 +107,9 @@
   .list li>a{color:var(--ink);text-decoration:none}
   .list li>a b{font-weight:500}
   .list li>a.title{color:var(--forest);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px}
+  /* On hover, the essay's first sentence */
+  .list .deck{grid-column:2;font-size:15px;line-height:1.4;color:var(--muted);min-height:21px;opacity:0;transition:opacity .15s ease}
+  .list li:hover .deck,.list li:focus-within .deck{opacity:1}
 
   /* About */
 
@@ -149,11 +155,21 @@
     .channels{gap:16px}
   }
 
+  /* Touch: the previews are one tap away, so the lines are not rendered */
+  @media (hover:none){
+    a.work .tell,.list .deck{display:none}
+    a.work{margin:0 0 18px}
+  }
+  @media (prefers-reduced-motion:reduce){
+    a.work .tell,.list .deck{transition:none}
+  }
+
   /* Print: keep colors, hide interactive-only chrome */
   @media print{
     *{-webkit-print-color-adjust:exact !important;print-color-adjust:exact !important}
     .top nav{display:none}
-    .list .gh, h2.sect .cta{display:none}
+    .list .gh, h2.sect .cta, a.work .tell, .list .deck{display:none}
+    a.work{margin:0 0 18px}
     .intro{grid-template-columns:1fr 150px}
   }
 
@@ -195,6 +211,7 @@
     <div>
       <p class="meta"><span>PM Intern, Disney+ Search</span><span class="md">Summer '26</span></p>
       <p><b>Making Disney+ search results explainable.</b> Over ten weeks in Seattle I took on four projects, from the ranking model to an assistant that two teams adopted.</p>
+      <p class="tell">start with the person who can say no.</p>
     </div>
   </a>
   <a class="work" href="case-studies/hoagie.html">
@@ -202,6 +219,7 @@
     <div>
       <p class="meta"><span>Head of Product, Hoagie</span><span class="md">Sep '25 to Now</span></p>
       <p><b>Rebuilding Hoagie around event discovery.</b> When I joined in fall 2025 HoagieMail already worked, so nobody had looked hard at what using it every day actually felt like.</p>
+      <p class="tell">It turned out to be the only reason the thing shipped at all.</p>
     </div>
   </a>
   <a class="work" href="case-studies/cariina.html">
@@ -209,6 +227,7 @@
     <div>
       <p class="meta"><span>Product Success Intern, Cariina</span><span class="md">Summer '25</span></p>
       <p><b>Dashboards for districts that had stopped logging in.</b> “We have the data. We just don’t know what it’s telling us.” Fifteen K-12 administrators said the same thing in different words in summer 2025, and 17 of the 20 quiet districts came back.</p>
+      <p class="tell">A sixth feature on a product nobody opened was not going to change that.</p>
     </div>
   </a>
   <a class="work" href="case-studies/ai-fluency-lab.html">
@@ -216,6 +235,7 @@
     <div>
       <p class="meta"><span>Founder &amp; Co-Lead, Princeton AI Exploration Lab</span><span class="md">'25 to Now</span></p>
       <p><b>Teaching AI to students outside computer science.</b> In spring 2026 I ran the pilot for 25+ undergraduates from psychology, classics, sociology, and non-CS STEM. Nine of them presented a project at the closing symposium.</p>
+      <p class="tell">The program runs again in the fall whether or not I am the one running it.</p>
     </div>
   </a>
 
@@ -230,9 +250,9 @@
   <!-- WRITING -->
   <h2 class="sect" id="writing">Blogs</h2>
   <ul class="list">
-    <li><span class="d">Aug 2026</span><a class="title" href="essays/500ms-sound.html">Why 500 milliseconds of sound creates entire narratives.</a></li>
-    <li><span class="d">Jul 2026</span><a class="title" href="essays/working-with-ai.html">Working with AI like it's a product sprint.</a></li>
-    <li><span class="d">Jun 2026</span><a class="title" href="essays/major-as-method.html">Hong Kong, a harp, and how I ended up in product.</a></li>
+    <li><span class="d">Aug 2026</span><a class="title" href="essays/500ms-sound.html">Why 500 milliseconds of sound creates entire narratives.</a><span class="deck">Play someone half a second of sound.</span></li>
+    <li><span class="d">Jul 2026</span><a class="title" href="essays/working-with-ai.html">Working with AI like it's a product sprint.</a><span class="deck">Most people I know open a chat window, type what they want, and hope for the best.</span></li>
+    <li><span class="d">Jun 2026</span><a class="title" href="essays/major-as-method.html">Hong Kong, a harp, and how I ended up in product.</a><span class="deck">People ask how a psychology major ended up running product.</span></li>
   </ul>
 
   <!-- ABOUT -->
