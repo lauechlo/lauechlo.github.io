@@ -65,6 +65,15 @@ const VIEWPORTS = [
             nowMarks: document.querySelectorAll('.now li > svg[aria-hidden="true"]').length,
             slidesAspect: (r => r.height ? r.width / r.height : 0)((document.getElementById('slides') || document.body).getBoundingClientRect()),
             slidesNoAlt: [...document.querySelectorAll('#slides img')].filter(i => !i.getAttribute('alt')).length,
+            // 2026-09-12 pass: no separator dots or typographic arrows in visible text; hover previews exist and stay hidden at rest
+            dots: ([...document.querySelectorAll('main, article, .topbar, .article-footer')].map(e => e.innerText || '').join(' ').match(/·/g) || []).length,
+            arrows: ([...document.querySelectorAll('main, article, .topbar, .article-footer')].map(e => e.innerText || '').join(' ').match(/[→←↗]/g) || []).length,
+            tells: document.querySelectorAll('a.work .tell').length,
+            decks: document.querySelectorAll('.list .deck').length,
+            arrs: document.querySelectorAll('.arr').length,
+            touch: window.matchMedia('(hover: none)').matches,
+            previewsShown: [...document.querySelectorAll('a.work .tell, .list .deck, .mg')]
+              .filter(e => { const s = getComputedStyle(e); return s.display !== 'none' && parseFloat(s.opacity) > 0; }).length,
           };
         });
         const fail = (what) => failures.push(`${vp.name} ${path}: ${what}`);
@@ -91,6 +100,14 @@ const VIEWPORTS = [
           if (m.nowMarks !== 5) fail(`expected 5 pen-mark svgs on the Currently rows, found ${m.nowMarks}`);
           if (m.slidesAspect < 0.76 || m.slidesAspect > 0.84) fail(`slideshow box is ${m.slidesAspect.toFixed(2)} wide per tall, expected a fixed 4:5 portrait`);
           if (m.slidesNoAlt > 0) fail(`${m.slidesNoAlt} slideshow photos without alt text`);
+        }
+        if (m.dots > 0) fail(`${m.dots} middle-dot separators in visible text`);
+        if (m.arrows > 0) fail(`${m.arrows} typographic arrows in visible text`);
+        if (path === '/index.html') {
+          if (m.tells !== 4) fail(`expected 4 lesson lines under the case-study rows, found ${m.tells}`);
+          if (m.decks !== 3) fail(`expected 3 first-sentence lines under the blog titles, found ${m.decks}`);
+          if (m.arrs > 0) fail(`${m.arrs} .arr arrow spans still in the DOM`);
+          if (m.previewsShown > 0) fail(`${m.previewsShown} hover previews visible at rest on a ${m.touch ? 'touch' : 'pointer'} viewport`);
         }
         if (m.tinyText > 0) fail(`${m.tinyText} text elements under 12px`);
         errors.forEach(fail);
