@@ -170,21 +170,14 @@ article ul li::marker{color:var(--slate)}
   margin:0 auto;
   padding:32px 32px 64px;
   border-top:1px solid var(--line);
-  display:flex;justify-content:space-between;align-items:flex-start;
+  display:flex;justify-content:space-between;align-items:center;
   font-size:13px;color:var(--muted);}
 .article-footer a{
   color:var(--ink-2);
-  display:inline-block;
-  transition:color .15s;}
-.article-footer a>span{border-bottom:1px solid var(--line);padding-bottom:1px;transition:border-color .15s}
-.article-footer a:hover{color:var(--slate-2)}
-.article-footer a:hover>span{border-color:var(--slate)}
-/* On hover, the next page's title under the link */
-.article-footer a[data-deck]{text-align:right}
-.article-footer a[data-deck]::after{content:attr(data-deck);display:block;font-size:13px;color:var(--muted);margin-top:4px;min-height:19px;opacity:0;transition:opacity .15s;text-align:right}
-.article-footer a:hover::after,.article-footer a:focus-visible::after{opacity:1}
-@media (hover:none){.article-footer a[data-deck]::after{display:none}}
-@media (prefers-reduced-motion:reduce){.article-footer a::after,.article-footer a,.article-footer a>span{transition:none}}
+  border-bottom:1px solid var(--line);
+  padding-bottom:1px;
+  transition:color .15s, border-color .15s;}
+.article-footer a:hover{color:var(--slate-2);border-color:var(--slate)}
 
 .topbar .crumb{min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:55%}
 
@@ -221,9 +214,7 @@ article ul li::marker{color:var(--slate)}
   /* Strip sticky behavior + interactivity */
   .topbar{position:static !important;background:var(--bone) !important;backdrop-filter:none !important;padding:0 0 14px;border-bottom:1px solid var(--line) !important}
   .article-footer{margin-top:32px}
-  .article-footer a{color:var(--ink-2) !important}
-  .article-footer a>span{border-bottom:none}
-  .article-footer a::after{display:none}
+  .article-footer a{color:var(--ink-2) !important;border-bottom:none}
   article h1{font-size:clamp(28px,4.4vw,40px)}
   article h2{font-size:23px}
   article p, article ul li{font-size:15px}

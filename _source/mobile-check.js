@@ -65,13 +65,10 @@ const VIEWPORTS = [
             nowMarks: document.querySelectorAll('.now li > svg[aria-hidden="true"]').length,
             slidesAspect: (r => r.height ? r.width / r.height : 0)((document.getElementById('slides') || document.body).getBoundingClientRect()),
             slidesNoAlt: [...document.querySelectorAll('#slides img')].filter(i => !i.getAttribute('alt')).length,
-            // 2026-09-12 pass: no separator dots or typographic arrows in visible text; hover previews stay hidden at rest
+            // 2026-09-12 pass: no separator dots or typographic arrows in visible text
             dots: ([...document.querySelectorAll('main, article, .topbar, .article-footer')].map(e => e.innerText || '').join(' ').match(/·/g) || []).length,
             arrows: ([...document.querySelectorAll('main, article, .topbar, .article-footer')].map(e => e.innerText || '').join(' ').match(/[→←↗]/g) || []).length,
             arrs: document.querySelectorAll('.arr').length,
-            touch: window.matchMedia('(hover: none)').matches,
-            previewsShown: [...document.querySelectorAll('.mg')]
-              .filter(e => { const s = getComputedStyle(e); return s.display !== 'none' && parseFloat(s.opacity) > 0; }).length,
           };
         });
         const fail = (what) => failures.push(`${vp.name} ${path}: ${what}`);
@@ -103,7 +100,6 @@ const VIEWPORTS = [
         if (m.arrows > 0) fail(`${m.arrows} typographic arrows in visible text`);
         if (path === '/index.html') {
           if (m.arrs > 0) fail(`${m.arrs} .arr arrow spans still in the DOM`);
-          if (m.previewsShown > 0) fail(`${m.previewsShown} hover previews visible at rest on a ${m.touch ? 'touch' : 'pointer'} viewport`);
         }
         if (m.tinyText > 0) fail(`${m.tinyText} text elements under 12px`);
         errors.forEach(fail);
