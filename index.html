@@ -173,17 +173,20 @@
   .stack::after{transform:rotate(5deg) translate(8px,-2px);background:var(--bone-2)}
   .stack .slides{position:relative;z-index:1;box-sizing:border-box;border:8px solid #fff;border-bottom-width:26px;border-radius:2px;background:#fff;transform:rotate(-2.5deg)}
   @media (max-width:767px){
-    .hero{padding-top:10px}
-    .hero .brand{margin-top:52px}
-    .sticker{width:84px;right:6px;top:0}
-    .iconnav{gap:8px 10px;margin:20px 0 22px}
+    .hero{padding-top:8px}
+    .hero .brand{margin-top:40px}
+    .hero .brand svg{width:70vw}
+    .sticker{width:68px;right:4px;top:0;border-width:5px 5px 14px}
+    /* five columns, so the row can never wrap; long labels break under their icons */
+    .iconnav{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px 6px;justify-items:center;margin:18px 0 18px}
     .iconnav svg{width:38px;height:38px}
-    .iconnav a{font-size:12px}
-    .iconnav a span{max-width:62px;text-align:center}
-    .toc{max-width:300px}
+    .iconnav a{font-size:12px;min-width:0;width:100%}
+    .iconnav a span{text-align:center;overflow-wrap:anywhere}
+    .toc{max-width:300px;font-size:16px}
+    .toc li a{padding:2px 0}
     .intro{margin-top:32px}
     .headshot.print{width:140px}
-    .stack{width:min(240px,100%)}
+    .stack{width:min(240px,100%);margin-left:12px}
   }
 </style>
 </head>

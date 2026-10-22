@@ -16,6 +16,9 @@ const VIEWPORTS = [
   { name: 'i14 390',     ...devices['iPhone 13'], viewport: { width: 390, height: 664 } },
   { name: 'ProMax 430',  ...devices['iPhone 15 Pro Max'] },
   { name: 'ProMax land', ...devices['iPhone 15 Pro Max landscape'] },
+  // 2026-10-22: a common Android width, and the narrowest phone still around (homepage only)
+  { name: 'Android 360', viewport: { width: 360, height: 740 }, deviceScaleFactor: 3, isMobile: true, hasTouch: true },
+  { name: 'Narrow 320',  viewport: { width: 320, height: 568 }, deviceScaleFactor: 2, isMobile: true, hasTouch: true, only: '/index.html' },
 ];
 
 (async () => {
@@ -23,8 +26,10 @@ const VIEWPORTS = [
   const failures = [];
   try {
     for (const vp of VIEWPORTS) {
-      const ctx = await browser.newContext(vp);
+      const { only, ...ctxOpts } = vp;
+      const ctx = await browser.newContext(ctxOpts);
       for (const path of PAGES) {
+        if (vp.only && path !== vp.only) continue;
         const page = await ctx.newPage();
         const errors = [];
         page.on('response', r => { if (r.status() === 404) errors.push(`404 ${r.url()}`); });
@@ -102,7 +107,7 @@ const VIEWPORTS = [
           if (m.resumeGrid > 0) fail(`${m.resumeGrid} résumé grid elements still in the DOM`);
           if (m.slides < 11) fail(`expected at least 11 slideshow photos, found ${m.slides}`);
           if (m.brandMark !== 1) fail(`expected the handwritten wordmark svg in .hero .brand, found ${m.brandMark}`);
-          if (m.heroMarkH < 120) fail(`wordmark hero is ${Math.round(m.heroMarkH)}px tall, expected at least 120`);
+          if (m.heroMarkH < 110) fail(`wordmark hero is ${Math.round(m.heroMarkH)}px tall, expected at least 110`);
           if (m.iconNav !== 5) fail(`expected 5 pen-mark svgs in the icon nav, found ${m.iconNav}`);
           if (m.toc !== 7) fail(`expected 7 contents entries, found ${m.toc}`);
           if (m.deadAnchors > 0) fail(`${m.deadAnchors} nav or contents links point at missing ids`);
