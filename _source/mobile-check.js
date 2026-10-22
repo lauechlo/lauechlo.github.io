@@ -61,7 +61,15 @@ const VIEWPORTS = [
             rotationLeftovers: document.querySelectorAll('#reading-rotation, #today-spin, .now li[data-icon]').length,
             resumeGrid: document.querySelectorAll('.resume, .res-col').length,
             slides: document.querySelectorAll('#slides img').length,
-            brandMark: document.querySelectorAll('.top .brand svg[role="img"][aria-label="Chloe Lau"]').length,
+            brandMark: document.querySelectorAll('.hero .brand svg[role="img"][aria-label="Chloe Lau"]').length,
+            // 2026-10-22 lettering piece: the wordmark is the hero, the pen marks are the nav, a numbered contents list, paper prints
+            heroMarkH: (e => e ? e.getBoundingClientRect().height : 0)(document.querySelector('.hero .brand svg')),
+            iconNav: document.querySelectorAll('.iconnav a > svg[aria-hidden="true"]').length,
+            toc: document.querySelectorAll('.toc li a[href^="#"]').length,
+            deadAnchors: [...document.querySelectorAll('.toc a[href^="#"], .iconnav a[href^="#"]')].filter(a => !document.getElementById(a.getAttribute('href').slice(1))).length,
+            smooth: getComputedStyle(document.documentElement).scrollBehavior,
+            prints: document.querySelectorAll('.headshot.print, .stack > #slides').length,
+            topBar: document.querySelectorAll('.top').length,
             poemsLink: document.querySelectorAll('a[href="essays/poems.html"]').length,
             nowMarks: document.querySelectorAll('.now li > svg[aria-hidden="true"]').length,
             slidesAspect: (r => r.height ? r.width / r.height : 0)((document.getElementById('slides') || document.body).getBoundingClientRect()),
@@ -92,7 +100,14 @@ const VIEWPORTS = [
           if (m.rotationLeftovers > 0) fail(`${m.rotationLeftovers} rotation ids or data-icon glyphs still in the DOM`);
           if (m.resumeGrid > 0) fail(`${m.resumeGrid} résumé grid elements still in the DOM`);
           if (m.slides < 11) fail(`expected at least 11 slideshow photos, found ${m.slides}`);
-          if (m.brandMark !== 1) fail(`expected the handwritten wordmark svg in .brand, found ${m.brandMark}`);
+          if (m.brandMark !== 1) fail(`expected the handwritten wordmark svg in .hero .brand, found ${m.brandMark}`);
+          if (m.heroMarkH < 120) fail(`wordmark hero is ${Math.round(m.heroMarkH)}px tall, expected at least 120`);
+          if (m.iconNav !== 5) fail(`expected 5 pen-mark svgs in the icon nav, found ${m.iconNav}`);
+          if (m.toc !== 7) fail(`expected 7 contents entries, found ${m.toc}`);
+          if (m.deadAnchors > 0) fail(`${m.deadAnchors} nav or contents links point at missing ids`);
+          if (m.smooth !== 'smooth') fail(`scroll-behavior is ${m.smooth}, expected smooth`);
+          if (m.prints !== 2) fail(`expected the headshot print and the framed slideshow, found ${m.prints}`);
+          if (m.topBar > 0) fail(`old .top bar still in the DOM`);
           if (m.poemsLink < 1) fail(`the poems page is not linked from the homepage`);
           if (m.nowMarks !== 5) fail(`expected 5 pen-mark svgs on the Currently rows, found ${m.nowMarks}`);
           if (m.slidesAspect < 0.76 || m.slidesAspect > 0.84) fail(`slideshow box is ${m.slidesAspect.toFixed(2)} wide per tall, expected a fixed 4:5 portrait`);
