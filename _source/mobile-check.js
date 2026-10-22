@@ -70,6 +70,7 @@ const VIEWPORTS = [
             smooth: getComputedStyle(document.documentElement).scrollBehavior,
             prints: document.querySelectorAll('.headshot.print, .stack > #slides').length,
             topBar: document.querySelectorAll('.top').length,
+            iconNavRows: new Set([...document.querySelectorAll('.iconnav a')].map(a => Math.round(a.getBoundingClientRect().top))).size,
             poemsLink: document.querySelectorAll('a[href="essays/poems.html"]').length,
             nowMarks: document.querySelectorAll('.now li > svg[aria-hidden="true"]').length,
             slidesAspect: (r => r.height ? r.width / r.height : 0)((document.getElementById('slides') || document.body).getBoundingClientRect()),
@@ -108,6 +109,7 @@ const VIEWPORTS = [
           if (m.smooth !== 'smooth') fail(`scroll-behavior is ${m.smooth}, expected smooth`);
           if (m.prints !== 2) fail(`expected the headshot print and the framed slideshow, found ${m.prints}`);
           if (m.topBar > 0) fail(`old .top bar still in the DOM`);
+          if (m.iconNavRows !== 1) fail(`icon nav wraps to ${m.iconNavRows} rows`);
           if (m.poemsLink < 1) fail(`the poems page is not linked from the homepage`);
           if (m.nowMarks !== 5) fail(`expected 5 pen-mark svgs on the Currently rows, found ${m.nowMarks}`);
           if (m.slidesAspect < 0.76 || m.slidesAspect > 0.84) fail(`slideshow box is ${m.slidesAspect.toFixed(2)} wide per tall, expected a fixed 4:5 portrait`);
