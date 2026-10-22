@@ -50,6 +50,7 @@ const VIEWPORTS = [
             fraunces: !![...document.styleSheets].find(ss => (ss.href||'').includes('Fraunces')) || !![...document.querySelectorAll('link')].find(l => (l.href||'').includes('Fraunces')),
             emDash: (document.querySelector('main')?.innerText || '').includes('—'),
             ground: getComputedStyle(document.body).backgroundColor,
+            topbar: (el => el ? getComputedStyle(el).backgroundColor : '')(document.querySelector('.topbar')),
             icon96: document.querySelectorAll('link[rel="icon"][sizes="96x96"], link[rel="icon"][href="/favicon.ico"]').length,
             personLd: [...document.querySelectorAll('script[type="application/ld+json"]')].filter(s => /"Person"/.test(s.textContent) && /"WebSite"/.test(s.textContent)).length,
             oldFonts: [...document.querySelectorAll('link[rel="stylesheet"]')].filter(l => /Vollkorn|Commissioner/.test(l.href || '')).length,
@@ -76,7 +77,8 @@ const VIEWPORTS = [
         if (m.headerH > 64) fail(`header ${Math.round(m.headerH)}px tall`);
         if (m.icon96 < 2) fail(`missing the 96px icon or the root favicon.ico (Google needs a 48-multiple icon)`);
         if (path === '/index.html' && m.personLd < 1) fail(`homepage lacks the WebSite + Person structured data`);
-        if (m.ground !== 'rgb(233, 240, 236)') fail(`ground is ${m.ground}, expected the sage paper rgb(233, 240, 236)`);
+        if (m.ground !== 'rgb(250, 243, 209)') fail(`ground is ${m.ground}, expected the butter paper rgb(250, 243, 209)`);
+        if (m.topbar && !m.topbar.startsWith('rgba(250, 243, 209')) fail(`topbar is ${m.topbar}, expected the butter paper with alpha`);
         if (m.oldFonts > 0) fail(`Vollkorn or Commissioner still requested (owner chose Newsreader + Karla on 2026-09-04)`);
         if (path === '/index.html') {
           if (m.workRows !== 4) fail(`expected 4 a.work rows, found ${m.workRows}`);
@@ -89,7 +91,7 @@ const VIEWPORTS = [
           if (m.magicLeftovers > 0) fail(`${m.magicLeftovers} magic-mode elements still in the DOM`);
           if (m.rotationLeftovers > 0) fail(`${m.rotationLeftovers} rotation ids or data-icon glyphs still in the DOM`);
           if (m.resumeGrid > 0) fail(`${m.resumeGrid} résumé grid elements still in the DOM`);
-          if (m.slides < 9) fail(`expected at least 9 slideshow photos, found ${m.slides}`);
+          if (m.slides < 11) fail(`expected at least 11 slideshow photos, found ${m.slides}`);
           if (m.brandMark !== 1) fail(`expected the handwritten wordmark svg in .brand, found ${m.brandMark}`);
           if (m.poemsLink < 1) fail(`the poems page is not linked from the homepage`);
           if (m.nowMarks !== 5) fail(`expected 5 pen-mark svgs on the Currently rows, found ${m.nowMarks}`);
