@@ -80,7 +80,6 @@ const VIEWPORTS = [
             nowMarks: document.querySelectorAll('.now li > svg[aria-hidden="true"]').length,
             // 2026-10-24: seven nav marks in contents order; four are drawings of their own (clock, harp, pencil, envelope), three are copies of Currently marks
             navOrder: [...document.querySelectorAll('.iconnav a')].map(a => a.getAttribute('href')).join(','),
-            tocOrder: [...document.querySelectorAll('.toc li a')].map(a => a.getAttribute('href')).join(','),
             ownNav: (() => { const now = new Set([...document.querySelectorAll('.now li > svg path')].map(p => p.getAttribute('d')));
               return [...document.querySelectorAll('.iconnav a')].filter(a => { const p = a.querySelector('svg path'); return p && !now.has(p.getAttribute('d')); }).map(a => a.getAttribute('href')).join(','); })(),
             slidesAspect: (r => r.height ? r.width / r.height : 0)((document.getElementById('slides') || document.body).getBoundingClientRect()),
@@ -114,8 +113,8 @@ const VIEWPORTS = [
           if (m.brandMark !== 1) fail(`expected the handwritten wordmark svg in .hero .brand, found ${m.brandMark}`);
           if (m.heroMarkH < 110) fail(`wordmark hero is ${Math.round(m.heroMarkH)}px tall, expected at least 110`);
           if (m.iconNav !== 7) fail(`expected 7 pen-mark svgs in the icon nav, found ${m.iconNav}`);
-          if (m.navOrder !== m.tocOrder) fail(`icon nav order ${m.navOrder} should match the contents list ${m.tocOrder}`);
-          if (m.toc !== 7) fail(`expected 7 contents entries, found ${m.toc}`);
+          if (m.navOrder !== '#currently,#projects,#quests,#writing,#about,#resume,#contact') fail(`icon nav order ${m.navOrder} should follow the sections`);
+          if (m.toc !== 0) fail(`contents list still in the DOM (${m.toc} entries); removed 2026-10-24, the icon row carries the seven links`);
           if (m.deadAnchors > 0) fail(`${m.deadAnchors} nav or contents links point at missing ids`);
           if (m.smooth !== 'smooth') fail(`scroll-behavior is ${m.smooth}, expected smooth`);
           if (m.prints !== 2) fail(`expected the headshot print and the framed slideshow, found ${m.prints}`);
