@@ -132,6 +132,15 @@ const VIEWPORTS = [
           if (m.arrs > 0) fail(`${m.arrs} .arr arrow spans still in the DOM`);
         }
         if (m.tinyText > 0) fail(`${m.tinyText} text elements under 12px`);
+        if (path === '/index.html') {
+          // 2026-10-24: every inlined mark is byte-identical to its reference copy in assets/marks
+          const want = { now: ['building', 'researching', 'reading', 'treble-clef', 'strawberry'], nav: ['clock', 'researching', 'building', 'reading', 'harp', 'pencil', 'envelope'] };
+          const got = await page.evaluate(() => ({ now: [...document.querySelectorAll('.now li > svg path')].map(p => p.getAttribute('d')), nav: [...document.querySelectorAll('.iconnav a > svg path')].map(p => p.getAttribute('d')) }));
+          for (const [k, names] of Object.entries(want)) for (let i = 0; i < names.length; i++) {
+            const d = (await (await page.request.get(`${BASE}/assets/marks/${names[i]}.svg`)).text()).match(/ d="([^"]+)"/);
+            if (!d || d[1] !== got[k][i]) fail(`${k} mark ${i + 1} should be the reference copy assets/marks/${names[i]}.svg`);
+          }
+        }
         errors.forEach(fail);
         await page.close();
       }
