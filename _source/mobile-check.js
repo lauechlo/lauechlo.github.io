@@ -78,7 +78,9 @@ const VIEWPORTS = [
             iconNavRows: new Set([...document.querySelectorAll('.iconnav a')].map(a => Math.round(a.getBoundingClientRect().top))).size,
             poemsLink: document.querySelectorAll('a[href="essays/poems.html"]').length,
             nowMarks: document.querySelectorAll('.now li > svg[aria-hidden="true"]').length,
-            // 2026-10-24: two nav marks are drawings of their own (harp, envelope), the other three are copies of Currently marks
+            // 2026-10-24: seven nav marks in contents order; four are drawings of their own (clock, harp, pencil, envelope), three are copies of Currently marks
+            navOrder: [...document.querySelectorAll('.iconnav a')].map(a => a.getAttribute('href')).join(','),
+            tocOrder: [...document.querySelectorAll('.toc li a')].map(a => a.getAttribute('href')).join(','),
             ownNav: (() => { const now = new Set([...document.querySelectorAll('.now li > svg path')].map(p => p.getAttribute('d')));
               return [...document.querySelectorAll('.iconnav a')].filter(a => { const p = a.querySelector('svg path'); return p && !now.has(p.getAttribute('d')); }).map(a => a.getAttribute('href')).join(','); })(),
             slidesAspect: (r => r.height ? r.width / r.height : 0)((document.getElementById('slides') || document.body).getBoundingClientRect()),
@@ -111,7 +113,8 @@ const VIEWPORTS = [
           if (m.slides < 11) fail(`expected at least 11 slideshow photos, found ${m.slides}`);
           if (m.brandMark !== 1) fail(`expected the handwritten wordmark svg in .hero .brand, found ${m.brandMark}`);
           if (m.heroMarkH < 110) fail(`wordmark hero is ${Math.round(m.heroMarkH)}px tall, expected at least 110`);
-          if (m.iconNav !== 5) fail(`expected 5 pen-mark svgs in the icon nav, found ${m.iconNav}`);
+          if (m.iconNav !== 7) fail(`expected 7 pen-mark svgs in the icon nav, found ${m.iconNav}`);
+          if (m.navOrder !== m.tocOrder) fail(`icon nav order ${m.navOrder} should match the contents list ${m.tocOrder}`);
           if (m.toc !== 7) fail(`expected 7 contents entries, found ${m.toc}`);
           if (m.deadAnchors > 0) fail(`${m.deadAnchors} nav or contents links point at missing ids`);
           if (m.smooth !== 'smooth') fail(`scroll-behavior is ${m.smooth}, expected smooth`);
@@ -120,7 +123,7 @@ const VIEWPORTS = [
           if (m.iconNavRows !== 1) fail(`icon nav wraps to ${m.iconNavRows} rows`);
           if (m.poemsLink < 1) fail(`the poems page is not linked from the homepage`);
           if (m.nowMarks !== 5) fail(`expected 5 pen-mark svgs on the Currently rows, found ${m.nowMarks}`);
-          if (m.ownNav !== '#about,#contact') fail(`nav marks of their own should be #about,#contact (harp, envelope), found '${m.ownNav}'`);
+          if (m.ownNav !== '#currently,#about,#resume,#contact') fail(`nav marks of their own should be #currently,#about,#resume,#contact (clock, harp, pencil, envelope), found '${m.ownNav}'`);
           if (m.slidesAspect < 0.76 || m.slidesAspect > 0.84) fail(`slideshow box is ${m.slidesAspect.toFixed(2)} wide per tall, expected a fixed 4:5 portrait`);
           if (m.slidesNoAlt > 0) fail(`${m.slidesNoAlt} slideshow photos without alt text`);
         }
